@@ -1,4 +1,4 @@
-﻿using FullStack_Task.Models.Entities;
+﻿using FullStack_Task.Areas.Identity.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FullStack_Task.Data

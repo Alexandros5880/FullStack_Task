@@ -1,8 +1,7 @@
-﻿using FullStack_Task.Areas.Identity.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FullStack_Task.Models.Entities
+namespace FullStack_Task.Areas.Identity.Models
 {
     public class Comment
     {

@@ -83,10 +83,17 @@ namespace FullStack_Task
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
+
+                endpoints.MapControllers();
+
+                endpoints.MapControllerRoute(
+                   name: "areas",
+                   pattern: "{area:exists}/{controller=Register}/{action=Login}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
             });
         }
     }

@@ -1,8 +1,7 @@
-﻿using FullStack_Task.Areas.Identity.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FullStack_Task.Models.Entities
+namespace FullStack_Task.Areas.Identity.Models
 {
     public class BusinessArea
     {

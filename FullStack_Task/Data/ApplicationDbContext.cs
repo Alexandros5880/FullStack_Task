@@ -1,5 +1,4 @@
 ﻿using FullStack_Task.Areas.Identity.Models;
-using FullStack_Task.Models.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

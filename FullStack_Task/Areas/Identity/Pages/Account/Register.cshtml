@@ -1,67 +1,176 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Register";
+
+
+@section Styles {
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="~/css/Register.css" />
+
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+<h3>New User Registration</h3>
+<h6 class="display-screen"></h6>
+<br/>
+
+
+
+
+<div class="container-fluid my-form">
+    <div class="d-flex flex-md-row px-3 mt-4 flex-column-reverse my-form">
+
+        <!-- Left Side Proccess Bar -->
+        <div class="col-md-3 progress-container">
+            <div class="card1">
+                <ul id="progressbar" class="text-center">
+                    <li class="active step0" data-counter="1"></li>
+                    <li class="step0 tow" data-counter="2"></li>
+                    <li class="step0 three" data-counter="3"></li>
+                    <li class="step0 four" data-counter="4"></li>
+                    <li class="step0 five" data-counter="5"></li>
+                </ul>
+                <h6 class="mb-5" data-counter="1">Contact Info</h6>
+                <h6 class="mb-5" data-counter="2">Areas</h6>
+                <h6 class="mb-5" data-counter="3">Address</h6>
+                <h6 class="mb-5" data-counter="4">Password</h6>
+                <h6 class="mb-5" data-counter="5">Completed</h6>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
+        </div>
+
+
+        <div class="col-md-9 steps-container">
+
+            <div class="steps-sub-container">
+
+                <!-- Step 1 -->
+                <div class="card2 first-screen show ml-2" data-counter="1">
+                    <input type="hidden" value="STEP 1: Contact Info" />
+                    <div class="row px-3 mt-4">
+                        <div class="form-group mt-1 mb-1"> <input type="text" id="email" class="form-control" required> <label class="ml-3 form-control-placeholder" for="email">Email</label> </div>
                     </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
+                    <div class="row px-3 mt-1 mb-5">
+                        <div class="custom-control custom-checkbox"> <input checked id="customCheck1" type="checkbox" class="custom-control-input"> <label for="customCheck1" class="custom-control-label">I want to receive promo emails</label> </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="card2 ml-2" data-counter="2">
+                    <input type="hidden" value="STEP 2: Areas" />
+                    <div class="row px-3 mt-3">
+                        <div class="form-group mt-1 mb-1"> <input type="password" id="pwd" class="form-control" required> <label class="ml-3 form-control-placeholder" for="pwd">Password</label> </div>
+                    </div>
+                    <div class="row mt-3 mb-5">
+                        <div class="col-12">
+                            <p class="mb-1">Password must contain</p>
+                            <div class="row">
+                                <div class="col-6"><span class="fa fa-circle text-danger"></span> lower case</div>
+                                <div class="col-6"><span class="fa fa-circle text-danger"></span> numbers</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6"><span class="fa fa-circle text-danger"></span> upper case</div>
+                                <div class="col-6"><span class="fa fa-circle text-danger"></span> 8-16 characters</div>
+                            </div>
                         </div>
-                    </form>
-                }
-            }
-        </section>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="card2 ml-2" data-counter="3">
+                    <input type="hidden" value="STEP 3: Address" />
+                    <div class="row px-3 mt-3">
+                        <p class="mb-0">Select your Country</p>
+                        <div class="form-group mt-3 mb-4">
+                            <div class="select mb-3">
+                                <select name="account" class="form-control">
+                                    <option>India</option>
+                                    <option>USA</option>
+                                    <option>Germany</option>
+                                    <option>Mexico</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last 4 -->
+                <div class="card2 ml-2" data-counter="4">
+                    <input type="hidden" value="STEP 4: Password" />
+                    <div class="row px-3 mt-3">
+                        <p class="mb-0">Select your Country</p>
+                        <div class="form-group mt-3 mb-4">
+                            <div class="select mb-3">
+                                <select name="account" class="form-control">
+                                    <option>India</option>
+                                    <option>USA</option>
+                                    <option>Germany</option>
+                                    <option>Mexico</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last Step -->
+                <div class="card2 ml-2 last-screen" data-counter="5">
+                    <input type="hidden" value="STEP 5: Completed" />
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img alt="check" src="@Url.Content("~/images/check.jpg")" width="33" height="33"/>
+                            </div>
+                            <div class="col-md-11">
+                                <h3>Thank you for registering!</h3>
+                                <p>
+                                    A registration confirmation email was sent to the email address provided. Your registration will be sent
+                                    for approval and activation to the Administrator. <strong>
+                                        You will receive an email when your account is ready
+                                        to use.
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
+
+
+
+    <!-- Go Back -->
+    <div class="row text-center justify-content-center">
+        <div class="col-md-7">
+
+        </div>
+        <div class="col-md-5">
+            <div style="display:flex;">
+                <button class="prev btn btn-light">Back</button>
+                <button class="next-button btn btn-primary">Next</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12" style="text-align:left;">
+            <a class="nav-link mr-0" href="/Identity/Account/Login">Back to login</a>
+        </div>
+    </div>
+
 </div>
 
+
+
+
+
+
+
+
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+
+    <script type="text/javascript" src="~/js/Register.js"></script>
+
 }
