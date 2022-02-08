@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace FullStack_Task
 {
@@ -33,27 +34,22 @@ namespace FullStack_Task
                 .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddIdentity<ApplicationUser, ApplicationRole>()
-            //        .AddEntityFrameworkStores<ApplicationDbContext>()
-            //        .AddDefaultUI()
-            //        .AddDefaultTokenProviders();
-
-
-
-
-
-
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllersWithViews();
-            
-            
-            
-            
+
+
+
+            // Add Session Support
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+            });
+
+
+
+
             // Dependency Injection
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             services.AddScoped<IUsersRepository, UsersRepository>();
@@ -81,6 +77,9 @@ namespace FullStack_Task
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            // Add Session Support
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

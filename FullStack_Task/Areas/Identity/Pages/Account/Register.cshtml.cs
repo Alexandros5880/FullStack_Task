@@ -1,4 +1,5 @@
 ﻿using FullStack_Task.Areas.Identity.Models;
+using FullStack_Task.Models.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -60,6 +61,45 @@ namespace FullStack_Task.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            public Salutation Salutation { get; set; }
+
+            [Required]
+            public string FirstName { get; set; }
+
+            [Required]
+            public string LastName { get; set; }
+
+            public string MiddleName { get; set; }
+
+            [Required]
+            [DataType(DataType.PhoneNumber)]
+            public string Phone { get; set; }
+
+            [DataType(DataType.PhoneNumber)]
+            public string Mobile { get; set; }
+
+            [DataType(DataType.PhoneNumber)]
+            public string Fax { get; set; }
+
+            [Required]
+            public string Company { get; set; }
+
+            [Required]
+            public string Title { get; set; }
+
+            [Required]
+            public bool AcceptTerms { get; set; }
+
+            [Required]
+            public ICollection<BusinessArea> BusinessAreas { get; set; }
+
+            [Required]
+            public Comment Comment { get; set; }
+
+            [Required]
+            public Address Address { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
