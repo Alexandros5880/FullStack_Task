@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FullStack_Task.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>, IApplicationDbContext
     {
         public DbSet<Salutation> Salutetions { get; set; }
         public DbSet<BusinessArea> BusinessAreas { get; set; }
