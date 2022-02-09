@@ -171,4 +171,38 @@
 
 
 
+
+
+
+
+
+
+
+
+    // Input Masks
+    jQuery(function ($) {
+        $(".phone").mask("(999) - 9999999", { placeholder: "  " });
+        $(".fax").mask("(999) - 9999999", { placeholder: "  " });
+        $(".mobile").mask("(99) - 99999999", { placeholder: "  " });
+    });
+
+
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

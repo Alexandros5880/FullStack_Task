@@ -9,8 +9,7 @@ namespace FullStack_Task.Areas.Identity.Models
         public int ID { get; set; }
         [DataType(DataType.MultilineText)]
         public string Message { get; set; }
-        [ForeignKey("User")]
-        public string UserId { get; set; }
+        [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
     }
 }

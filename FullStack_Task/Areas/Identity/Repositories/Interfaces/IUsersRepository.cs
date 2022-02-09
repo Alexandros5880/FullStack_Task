@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FullStack_Task.Areas.Identity.Repositories.Interfaces
 {
-    interface IUsersRepository
+    public interface IUsersRepository
     {
         Task<bool> Add(ApplicationUser entity, string password);
         Task<ApplicationUser> Delete(string id);

@@ -74,7 +74,6 @@ namespace FullStack_Task.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    SalutationId = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -85,8 +84,9 @@ namespace FullStack_Task.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AcceptTerms = table.Column<bool>(type: "bit", nullable: false),
-                    CommentId = table.Column<int>(type: "int", nullable: false),
-                    AddressId = table.Column<int>(type: "int", nullable: false),
+                    CommentId = table.Column<int>(type: "int", nullable: true),
+                    AddressId = table.Column<int>(type: "int", nullable: true),
+                    SalutationID = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -106,11 +106,11 @@ namespace FullStack_Task.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Salutetions_SalutationId",
-                        column: x => x.SalutationId,
+                        name: "FK_AspNetUsers_Salutetions_SalutationID",
+                        column: x => x.SalutationID,
                         principalTable: "Salutetions",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -187,8 +187,8 @@ namespace FullStack_Task.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -208,7 +208,8 @@ namespace FullStack_Task.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -232,8 +233,8 @@ namespace FullStack_Task.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -266,6 +267,33 @@ namespace FullStack_Task.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "eb8468e7-1935-4ae4-8e9a-acd435a9093a", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AcceptTerms", "AccessFailedCount", "AddressId", "CommentId", "Company", "ConcurrencyStamp", "Email", "EmailConfirmed", "Fax", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "MiddleName", "Mobile", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SalutationID", "SecurityStamp", "Title", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", true, 0, null, null, "Alexandros Platanios", "8ebbc213-a4ce-43e8-881d-b3a176d3b846", "alexandrosplatanios15@gmail.com", false, "6949277783", "Alexandros", "Platanios", false, null, "", "6949277783", "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAEAN+BZtHi1miWl64iNo90cn1oLCcj5L7MltOd09gP3/xkODaWKdxSdf2I8s1I86e2w==", null, "6949277783", false, null, "", "Software Developer", false, "alexandrosplatanios15@gmail.com" });
+
+            migrationBuilder.InsertData(
+                table: "Salutetions",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Salutation 1" },
+                    { 2, "Salutation 2" },
+                    { 3, "Salutation 3" },
+                    { 4, "Salutation 4" },
+                    { 5, "Salutation 5" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId", "Discriminator" },
+                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "a18be9c0-aa65-4af8-bd17-00bd9344e575", "ApplicationUserRole" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_UserId",
@@ -320,9 +348,9 @@ namespace FullStack_Task.Migrations
                 column: "CommentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_SalutationId",
+                name: "IX_AspNetUsers_SalutationID",
                 table: "AspNetUsers",
-                column: "SalutationId");
+                column: "SalutationID");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -342,7 +370,7 @@ namespace FullStack_Task.Migrations
                 column: "AddressId",
                 principalTable: "Addresses",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_AspNetUsers_Comments_CommentId",
@@ -350,7 +378,7 @@ namespace FullStack_Task.Migrations
                 column: "CommentId",
                 principalTable: "Comments",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

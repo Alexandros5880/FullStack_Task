@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FullStack_Task.Areas.Identity.Repositories.Interfaces
 {
-    interface IRolesRepository
+    public interface IRolesRepository
     {
         Task Add(ApplicationRole entity);
         Task<ApplicationRole> Delete(string id);

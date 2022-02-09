@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStack_Task.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220208110515_Initial")]
+    [Migration("20220209154028_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,41 @@ namespace FullStack_Task.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("ApplicationUserBusinessArea");
+                });
+
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Address", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OfficeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.ApplicationRole", b =>
@@ -61,6 +96,15 @@ namespace FullStack_Task.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
+                            ConcurrencyStamp = "eb8468e7-1935-4ae4-8e9a-acd435a9093a",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.ApplicationUser", b =>
@@ -74,10 +118,10 @@ namespace FullStack_Task.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CommentId")
+                    b.Property<int?>("CommentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Company")
@@ -138,7 +182,7 @@ namespace FullStack_Task.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("SalutationId")
+                    b.Property<int?>("SalutationID")
                         .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
@@ -168,47 +212,40 @@ namespace FullStack_Task.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("SalutationId");
+                    b.HasIndex("SalutationID");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            AcceptTerms = true,
+                            AccessFailedCount = 0,
+                            Company = "Alexandros Platanios",
+                            ConcurrencyStamp = "8ebbc213-a4ce-43e8-881d-b3a176d3b846",
+                            Email = "alexandrosplatanios15@gmail.com",
+                            EmailConfirmed = false,
+                            Fax = "6949277783",
+                            FirstName = "Alexandros",
+                            LastName = "Platanios",
+                            LockoutEnabled = false,
+                            MiddleName = "",
+                            Mobile = "6949277783",
+                            NormalizedEmail = "alexandrosplatanios15@gmail.com",
+                            NormalizedUserName = "alexandrosplatanios15@gmail.com",
+                            Password = "-Platanios719791",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAN+BZtHi1miWl64iNo90cn1oLCcj5L7MltOd09gP3/xkODaWKdxSdf2I8s1I86e2w==",
+                            PhoneNumber = "6949277783",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            Title = "Software Developer",
+                            TwoFactorEnabled = false,
+                            UserName = "alexandrosplatanios15@gmail.com"
+                        });
                 });
 
-            modelBuilder.Entity("FullStack_Task.Models.Entities.Address", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OfficeName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Street")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("FullStack_Task.Models.Entities.BusinessArea", b =>
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.BusinessArea", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -226,7 +263,7 @@ namespace FullStack_Task.Migrations
                     b.ToTable("BusinessAreas");
                 });
 
-            modelBuilder.Entity("FullStack_Task.Models.Entities.Comment", b =>
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Comment", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -246,7 +283,7 @@ namespace FullStack_Task.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("FullStack_Task.Models.Entities.Salutation", b =>
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Salutation", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -259,6 +296,33 @@ namespace FullStack_Task.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Salutetions");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Salutation 1"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Salutation 2"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Salutation 3"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Salutation 4"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Name = "Salutation 5"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -312,10 +376,12 @@ namespace FullStack_Task.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -339,11 +405,17 @@ namespace FullStack_Task.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUserRole<string>");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -352,10 +424,12 @@ namespace FullStack_Task.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -365,9 +439,23 @@ namespace FullStack_Task.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.ApplicationUserRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
+
+                    b.HasDiscriminator().HasValue("ApplicationUserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            RoleId = "ad376a8f-9eab-4bb9-9fca-30b01540f445"
+                        });
+                });
+
             modelBuilder.Entity("ApplicationUserBusinessArea", b =>
                 {
-                    b.HasOne("FullStack_Task.Models.Entities.BusinessArea", null)
+                    b.HasOne("FullStack_Task.Areas.Identity.Models.BusinessArea", null)
                         .WithMany()
                         .HasForeignKey("BusinessAreasID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -380,34 +468,7 @@ namespace FullStack_Task.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("FullStack_Task.Models.Entities.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FullStack_Task.Models.Entities.Comment", "Comment")
-                        .WithMany()
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FullStack_Task.Models.Entities.Salutation", "Salutation")
-                        .WithMany("Users")
-                        .HasForeignKey("SalutationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-
-                    b.Navigation("Comment");
-
-                    b.Navigation("Salutation");
-                });
-
-            modelBuilder.Entity("FullStack_Task.Models.Entities.Address", b =>
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Address", b =>
                 {
                     b.HasOne("FullStack_Task.Areas.Identity.Models.ApplicationUser", "User")
                         .WithMany()
@@ -416,7 +477,26 @@ namespace FullStack_Task.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FullStack_Task.Models.Entities.Comment", b =>
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("FullStack_Task.Areas.Identity.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.HasOne("FullStack_Task.Areas.Identity.Models.Comment", "Comment")
+                        .WithMany()
+                        .HasForeignKey("CommentId");
+
+                    b.HasOne("FullStack_Task.Areas.Identity.Models.Salutation", null)
+                        .WithMany("Users")
+                        .HasForeignKey("SalutationID");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Comment");
+                });
+
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Comment", b =>
                 {
                     b.HasOne("FullStack_Task.Areas.Identity.Models.ApplicationUser", "User")
                         .WithMany()
@@ -476,7 +556,7 @@ namespace FullStack_Task.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FullStack_Task.Models.Entities.Salutation", b =>
+            modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Salutation", b =>
                 {
                     b.Navigation("Users");
                 });

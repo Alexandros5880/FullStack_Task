@@ -14,8 +14,7 @@ namespace FullStack_Task.Areas.Identity.Models
         public string PostalCode { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        [ForeignKey("User")]
-        public string UserId { get; set; }
+        [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
     }
 }

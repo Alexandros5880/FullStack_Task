@@ -2,6 +2,8 @@ using FullStack_Task.Areas.Identity.Models;
 using FullStack_Task.Areas.Identity.Repositories;
 using FullStack_Task.Areas.Identity.Repositories.Interfaces;
 using FullStack_Task.Data;
+using FullStack_Task.HorizontalClasses;
+using FullStack_Task.HorizontalClasses.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +40,8 @@ namespace FullStack_Task
 
             services.AddControllersWithViews();
 
+            services.AddRazorPages();
+
 
 
             // Add Session Support
@@ -54,6 +58,10 @@ namespace FullStack_Task
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IRolesRepository, RolesRepository>();
+            services.AddScoped<IRepository<Address>, AddressRepository>();
+            services.AddScoped<IRepository<BusinessArea>, BuisnessAreaRepisitory>();
+            services.AddScoped<IRepository<Salutation>, SalutationRepository>();
+            services.AddScoped<IDBHundler, DBHundler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
