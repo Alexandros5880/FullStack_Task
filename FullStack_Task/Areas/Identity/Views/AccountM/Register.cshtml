@@ -395,21 +395,20 @@
 
                                 </div>
 
-                                <div class="col-md-6" style="text-align: right;" style="position:relative;">
-                                    <svg width="333" height="333" xmlns="http://www.w3.org/2000/svg">
+                                <div class="col-md-6" style="text-align: right;">
+                                    <svg class="cloud-message-svg" width="333" height="333" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M 10 10 H 300 V 187 H 77 V 40 Z" fill="lightgray" />
-                                        <text font-size="0.9em" font-weight="bold" x="31%" y="11%">
-                                            Instructions:
-                                        </text>
+                                        <g>
+                                            <text class="warning" font-size="0.9em" font-weight="bold" x="31%" y="11%">
+                                                Instructions: &#9888;
+                                            </text>
+                                            <text class="warning" font-size="0.9em" x="31%" y="20%">Password must include:</text>
+                                            <text class="warning" font-size="0.9em" x="31%" y="25%">- at least 8 characters</text>
+                                            <text class="warning" font-size="0.9em" x="31%" y="30%">- an UPPER case letter</text>
+                                            <text class="warning" font-size="0.9em" x="31%" y="35%">- a lower case letter</text>
+                                            <text class="warning" font-size="0.9em" x="31%" y="40%">- a number</text>
+                                        </g>
                                     </svg>
-                                    <i class="fas fa-exclamation-circle" style="color:red; position: absolute; left: 293px; top: 27px; font-size: 11px;"></i>
-                                    <p style="position: absolute; left: 211px; top: 57px; font-size: 11px; width: 200px; text-align: left;">
-                                        Password must include: <br />
-                                        - at least 8 characters <br />
-                                        - an UPPER case letter <br />
-                                        - a lower case letter <br />
-                                        - a number <br />
-                                    </p>
                                 </div>
 
                             </div>
@@ -461,7 +460,7 @@
         </div>
     </div>
 
-
+    <!-- Go To Login -->
     <div class="row">
         <div class="col-md-2" style="text-align:left;">
             <a class="mr-0" href="/Identity/Account/Login">Back to login</a>
