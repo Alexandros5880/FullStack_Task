@@ -204,6 +204,8 @@
                 <input type="hidden" value="STEP 2: Areas" />
                 @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
                 {
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
                     <div class="row" style="margin-left: 5%; padding-left: 5%;">
                         <div class="col-md-6">
                             @Html.Label("Business Areas", null, new { @class = "required my-label" })
@@ -236,6 +238,7 @@
 
                         @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
                         {
+                            <div asp-validation-summary="All" class="text-danger"></div>
 
                             <div class="form-group my-form-group">
                                 <div class="row">
@@ -325,19 +328,97 @@
             <!-- Password -->
             <div class="card2 ml-2" data-counter="4">
                 <input type="hidden" value="STEP 4: Password" />
-                <div class="row px-3 mt-3">
-                    <p class="mb-0">Select your Country</p>
-                    <div class="form-group mt-3 mb-4">
-                        <div class="select mb-3">
-                            <select name="account" class="form-control">
-                                <option>India</option>
-                                <option>USA</option>
-                                <option>Germany</option>
-                                <option>Mexico</option>
-                            </select>
-                        </div>
+
+                <div class="row">
+                    <div class="col-md-9" style="margin: 0 auto;">
+
+                        @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
+                        {
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group my-form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                @Html.Label("PASSWORD:", null, new { @class = "required my-label" })
+                                            </div>
+                                            <div class="col-md-9">
+                                                @Html.TextBoxFor(m => m.Password, new { @class = "form-control myinput" })
+                                                @Html.ValidationMessageFor(m => m.Password)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group my-form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                @Html.Label("CONFIRM PASSWORD:", null, new { @class = "required my-label" })
+                                            </div>
+                                            <div class="col-md-9">
+                                                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control myinput" })
+                                                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group my-form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                @Html.Label("CAPTCHA:", null, new { @class = "required my-label" })
+                                            </div>
+                                            <div class="col-md-9" style="text-align: left;">
+                                                <img id="img-captcha" src="~/api/Captcha" style="width: 100%;" />
+                                                <a href="#" id="refresh-captcha">Show another code</a>
+                                                <input type="text" class="form-control" placeholder="Captcha Code" asp-for="CaptchaCode" maxlength="4" />
+                                                @Html.Label("PUT IN THE ANSWER TO THE MATH EQUATION", null, new { @class = "details" })
+                                                <span asp-validation-for="CaptchaCode" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group my-form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div style="text-align: left;">
+                                                    <input type="checkbox" id="AcceptTerms" name="AcceptTerms" value="AcceptTerms" />
+                                                    @Html.Label("I have read and accept the terms of use", null, new { @class = "" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6" style="text-align: right;" style="position:relative;">
+                                    <svg width="333" height="333" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M 10 10 H 300 V 187 H 77 V 40 Z" fill="lightgray" />
+                                        <text font-size="0.9em" font-weight="bold" x="31%" y="11%">
+                                            Instructions:
+                                        </text>
+                                    </svg>
+                                    <i class="fas fa-exclamation-circle" style="color:red; position: absolute; left: 293px; top: 27px; font-size: 11px;"></i>
+                                    <p style="position: absolute; left: 211px; top: 57px; font-size: 11px; width: 200px; text-align: left;">
+                                        Password must include: <br />
+                                        - at least 8 characters <br />
+                                        - an UPPER case letter <br />
+                                        - a lower case letter <br />
+                                        - a number <br />
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        }
+
                     </div>
                 </div>
+
             </div>
 
             <!-- Completed -->
@@ -382,8 +463,8 @@
 
 
     <div class="row">
-        <div class="col-md-12" style="text-align:left;">
-            <a class="nav-link mr-0" href="/Identity/Account/Login">Back to login</a>
+        <div class="col-md-2" style="text-align:left;">
+            <a class="mr-0" href="/Identity/Account/Login">Back to login</a>
         </div>
     </div>
 
@@ -403,6 +484,15 @@
 
     <script>
         $(document).ready(function () {
+
+            $("#refresh-captcha").click(function () {
+                resetCaptchaImage();
+            });
+
+            function resetCaptchaImage() {
+                d = new Date();
+                $("#img-captcha").attr("src", "../../api/Captcha");
+            }
 
         });
     </script>

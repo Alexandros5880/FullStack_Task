@@ -21,6 +21,10 @@ namespace FullStack_Task.Areas.Identity.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public  bool AcceptTerms { get; set; }
+        [NotMapped]
+        [Required]
+        [StringLength(4)]
+        public string CaptchaCode { get; set; }
 
         // One -- One
         [ForeignKey("CommentId")]

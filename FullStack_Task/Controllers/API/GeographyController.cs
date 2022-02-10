@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace FullStack_Task.Controllers.API
 {
-    [Route("api/[controller]")]
+    [Route("api/Geography")]
     [ApiController]
     public class GeographyController : ControllerBase
     {

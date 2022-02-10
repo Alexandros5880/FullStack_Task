@@ -10,11 +10,11 @@ namespace FullStack_Task.Controllers.API
     public class CaptchaController : ControllerBase
     {
 
-        [Route("get-captcha-image")]
+        [HttpGet]
         public IActionResult GetCaptchaImage()
         {
-            int width = 100;
-            int height = 36;
+            int width = 300;
+            int height = 100;
             var captchaCode = Captcha.GenerateCaptchaCode();
             var result = Captcha.GenerateCaptchaImage(width, height, captchaCode);
             HttpContext.Session.SetString("CaptchaCode", result.CaptchaCode);
