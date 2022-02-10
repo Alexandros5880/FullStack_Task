@@ -62,6 +62,7 @@ namespace FullStack_Task
             services.AddScoped<IRepository<BusinessArea>, BuisnessAreaRepisitory>();
             services.AddScoped<IRepository<Salutation>, SalutationRepository>();
             services.AddScoped<IDBHundler, DBHundler>();
+            services.AddScoped<IGeography, Geography>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

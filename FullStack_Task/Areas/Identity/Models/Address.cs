@@ -7,7 +7,7 @@ namespace FullStack_Task.Areas.Identity.Models
     {
         [Key]
         public int ID { get; set; }
-        public string Country { get; set; }
+        public string Country { get; set; } = "";
         public string OfficeName { get; set; }
         public string Street { get; set; }
         [DataType(DataType.PostalCode)]

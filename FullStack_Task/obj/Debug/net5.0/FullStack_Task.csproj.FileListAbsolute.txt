@@ -282,6 +282,8 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\refs\WindowsBase.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\FullStack_Task.Views.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\FullStack_Task.Views.pdb
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\AutoMapper.dll
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Humanizer.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -305,10 +307,13 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Embedded.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
@@ -334,6 +339,7 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\System.Drawing.Common.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\System.Runtime.Caching.dll
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -403,6 +409,7 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.csproj.AssemblyReference.cache
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.GeneratedMSBuildEditorConfig.editorconfig
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.AssemblyInfoInputs.cache
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.AssemblyInfo.cs
@@ -457,6 +464,8 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\AccountM\Register.cshtml.g.cs
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\_ViewStart.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -473,12 +482,3 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\ref\FullStack_Task.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.pdb
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.genruntimeconfig.cache
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.csproj.AssemblyReference.cache
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\AutoMapper.dll
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\AccountM\Register.cshtml.g.cs
-F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\_ViewStart.cshtml.g.cs

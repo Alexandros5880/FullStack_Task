@@ -1,7 +1,16 @@
 ﻿@model FullStack_Task.Areas.Identity.Models.ViewModels.RegisterViewModel
 @using FullStack_Task.Areas.Identity.Models;
+@using FullStack_Task.Models.OtherModels;
+@using FullStack_Task.HorizontalClasses;
 
 
+
+
+@{ 
+    var salutations = ViewData["Data"] as IList<Salutation>;
+    var areas = ViewData["BusinessAreas"] as IList<BusinessArea>;
+    var countries = ViewData["Countries"] as IList<Country>;
+}
 
 
 
@@ -13,12 +22,10 @@
 }
 
 
+
 <h3>New User Registration</h3>
 <h6 class="display-screen"></h6>
 <br />
-
-
-
 
 
 <div class="container-fluid my-form">
@@ -63,7 +70,7 @@
                                         @Html.Label("SALUTATION:", null, new { @class = "required my-label" })
                                     </div>
                                     <div class="col-md-9">
-                                        @Html.DropDownListFor(m => m.SalutationId, new SelectList(ViewData["Data"] as IList<Salutation>, "ID", "Name"), "select", new { @class = "form-control myinput" })
+                                        @Html.DropDownListFor(m => m.SalutationId, new SelectList(@salutations, "ID", "Name"), "select", new { @class = "form-control myinput" })
                                         @Html.Label("EMAIL WILL BE YOUR LOGIN", null, new { @class = "details hidden" })
                                         @Html.ValidationMessageFor(m => m.SalutationId)
                                     </div>
@@ -200,7 +207,6 @@
                     <div class="row" style="margin-left: 5%; padding-left: 5%;">
                         <div class="col-md-6">
                             @Html.Label("Business Areas", null, new { @class = "required my-label" })
-                            @{ var areas = ViewData["BusinessAreas"] as IList<BusinessArea>; }
                             @foreach (var area in areas)
                             {
                                 <div style="margin-left: 5%;">
@@ -224,19 +230,96 @@
             <!-- Address -->
             <div class="card2 ml-2" data-counter="3">
                 <input type="hidden" value="STEP 3: Address" />
-                <div class="row px-3 mt-3">
-                    <p class="mb-0">Select your Country</p>
-                    <div class="form-group mt-3 mb-4">
-                        <div class="select mb-3">
-                            <select name="account" class="form-control">
-                                <option>India</option>
-                                <option>USA</option>
-                                <option>Germany</option>
-                                <option>Mexico</option>
-                            </select>
-                        </div>
+
+                <div class="row">
+                    <div class="col-md-6" style="margin: 0 auto;">
+
+                        @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
+                        {
+
+                            <div class="form-group my-form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.Label("COUNTRY:", null, new { @class = "required my-label" })
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.DropDownListFor(m => m.Address.Country, new SelectList(@countries, "Name", "Name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
+                                        @Html.ValidationMessageFor(m => m.Address.Country)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group my-form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.Label("OFFICE NAME:", null, new { @class = "required my-label" })
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Address.OfficeName, new { @class = "form-control myinput" })
+                                        @Html.ValidationMessageFor(m => m.Address.OfficeName)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group my-form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.Label("ADDRESS:", null, new { @class = "required my-label" })
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Address.Street, new { @class = "form-control myinput" })
+                                        @Html.ValidationMessageFor(m => m.Address.Street)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group my-form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.Label("POSTAL CODE:", null, new { @class = "required my-label" })
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Address.PostalCode, new { @class = "form-control myinput" })
+                                        @Html.ValidationMessageFor(m => m.Address.PostalCode)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group my-form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.Label("CITY", null, new { @class = "required my-label" })
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Address.City, new { @class = "form-control myinput" })
+                                        @Html.ValidationMessageFor(m => m.Address.City)
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group my-form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.Label("STATE:", null, new { @class = "required my-label" })
+                                    </div>
+                                    <div class="col-md-9">
+                                        @*@Html.DropDownListFor(m => m.Address.State, new SelectList(string.Empty, "Name", "Name"), "select", new { @class = "form-control dropdown", @id = "state-selection" })*@
+                                        <div id="state-drop-down">
+                                            <select class="form-control dropdown" id="state-selection" name="Address.State">
+                                                <option value="">Select Country</option>
+                                            </select>
+                                        </div>
+                                        @Html.ValidationMessageFor(m => m.Address.State)
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
                     </div>
                 </div>
+
             </div>
 
             <!-- Password -->
@@ -317,6 +400,12 @@
 
     <script type="text/javascript" src="~/js/Register.js"></script>
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
 
 }
 

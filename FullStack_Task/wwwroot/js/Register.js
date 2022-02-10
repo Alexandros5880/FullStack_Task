@@ -167,6 +167,7 @@
                 }
             });
         }
+
     });
 
 
@@ -187,6 +188,34 @@
     });
 
 
+
+
+
+
+
+    // When Country Selected Change Tha States
+    $("#country-selection").change(function () {
+        var countryName = $("#country-selection").val();
+        $.ajax({
+            url: `../../api/Geography/states/${countryName}`,
+            type: 'GET',
+            success: function (response) {
+                var html = `<select class="form-control dropdown" id="state-selection" name="Address.State"><option value="">select</option>`;
+                response.forEach(function (state) {
+                    html += `<option value="${state.name}">${state.name}</option>`;
+                });
+                html += `</select>`;
+                $('#state-drop-down').html(html);
+            },
+            error: function (response) {
+                $('#state-drop-down').html(`
+                            <select class="form-control dropdown" id="state-selection" name="Address.State">
+                                <option value="">Select Country</option>
+                            </select>
+                        `);
+            }
+        });
+    });
 
 
 

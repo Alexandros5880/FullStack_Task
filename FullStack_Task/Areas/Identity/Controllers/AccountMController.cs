@@ -9,10 +9,12 @@ namespace FullStack_Task.Areas.Identity.Controllers
     public class AccountMController : Controller
     {
         private readonly IDBHundler _db;
+        private readonly IGeography _geography;
 
-        public AccountMController(IDBHundler dbHundler)
+        public AccountMController(IDBHundler dbHundler, IGeography geography)
         {
             this._db = dbHundler;
+            this._geography = geography;
         }
 
         [HttpGet]
@@ -20,6 +22,7 @@ namespace FullStack_Task.Areas.Identity.Controllers
         {
             ViewData["Data"] = await this._db.Salutations.GetAll();
             ViewData["BusinessAreas"] = await this._db.BuisnessAreas.GetAll();
+            ViewData["Countries"] = await this._geography.GetCountriesAndStates();
             return View();
         }
 
