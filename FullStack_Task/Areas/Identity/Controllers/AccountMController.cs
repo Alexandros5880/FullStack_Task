@@ -19,6 +19,7 @@ namespace FullStack_Task.Areas.Identity.Controllers
         public async Task<IActionResult> Register()
         {
             ViewData["Data"] = await this._db.Salutations.GetAll();
+            ViewData["BusinessAreas"] = await this._db.BuisnessAreas.GetAll();
             return View();
         }
 

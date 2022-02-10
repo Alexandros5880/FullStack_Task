@@ -99,7 +99,7 @@ namespace FullStack_Task.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "eb8468e7-1935-4ae4-8e9a-acd435a9093a",
+                            ConcurrencyStamp = "119bd86c-8fcf-4999-83c9-8f9dd13047e1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -221,7 +221,7 @@ namespace FullStack_Task.Migrations
                             AcceptTerms = true,
                             AccessFailedCount = 0,
                             Company = "Alexandros Platanios",
-                            ConcurrencyStamp = "8ebbc213-a4ce-43e8-881d-b3a176d3b846",
+                            ConcurrencyStamp = "4527acc1-daec-47ca-9653-0ad9e15fde2e",
                             Email = "alexandrosplatanios15@gmail.com",
                             EmailConfirmed = false,
                             Fax = "6949277783",
@@ -233,7 +233,7 @@ namespace FullStack_Task.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAN+BZtHi1miWl64iNo90cn1oLCcj5L7MltOd09gP3/xkODaWKdxSdf2I8s1I86e2w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMElnIa0xl2GSAY1Oc7l0j8jMauVIllKqErYokbxru74X5Yw8KTbXYSQvWTSw7tQAw==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -250,15 +250,49 @@ namespace FullStack_Task.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsChecked")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
                     b.ToTable("BusinessAreas");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Finance"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Operations"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "IT"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Sales"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Name = "Administrative"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Name = "Lagel"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Name = "Marketing"
+                        });
                 });
 
             modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Comment", b =>

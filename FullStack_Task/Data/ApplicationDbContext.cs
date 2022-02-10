@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace FullStack_Task.Data
 {
@@ -104,7 +105,45 @@ namespace FullStack_Task.Data
 
 
 
-
+            // Create Buisness Areas
+            modelBuilder.Entity<BusinessArea>().HasData(new List<BusinessArea>()
+            {
+                new BusinessArea()
+                {
+                    ID = 1,
+                    Name = "Finance"
+                },
+                new BusinessArea()
+                {
+                    ID = 2,
+                    Name = "Operations"
+                },
+                new BusinessArea()
+                {
+                    ID = 3,
+                    Name = "IT"
+                },
+                new BusinessArea()
+                {
+                    ID = 4,
+                    Name = "Sales"
+                },
+                new BusinessArea()
+                {
+                    ID = 5,
+                    Name = "Administrative"
+                },
+                new BusinessArea()
+                {
+                    ID = 6,
+                    Name = "Lagel"
+                },
+                new BusinessArea()
+                {
+                    ID = 7,
+                    Name = "Marketing"
+                },
+            });
 
 
 

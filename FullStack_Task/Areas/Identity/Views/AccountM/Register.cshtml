@@ -45,7 +45,7 @@
 
         <div class="col-md-10 steps-container">
 
-            <!-- Step 1 -->
+            <!-- Contact Info -->
             <div class="card2 first-screen show ml-2" data-counter="1">
                 <input type="hidden" value="STEP 1: Contact Info" />
 
@@ -192,28 +192,36 @@
 
             </div>
 
-            <!-- Step 2 -->
+            <!-- Areas -->
             <div class="card2 ml-2" data-counter="2">
                 <input type="hidden" value="STEP 2: Areas" />
-                <div class="row px-3 mt-3">
-                    <div class="form-group mt-1 mb-1"> <input type="password" id="pwd" class="form-control" required> <label class="ml-3 form-control-placeholder" for="pwd">Password</label> </div>
-                </div>
-                <div class="row mt-3 mb-5">
-                    <div class="col-12">
-                        <p class="mb-1">Password must contain</p>
-                        <div class="row">
-                            <div class="col-6"><span class="fa fa-circle text-danger"></span> lower case</div>
-                            <div class="col-6"><span class="fa fa-circle text-danger"></span> numbers</div>
+                @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
+                {
+                    <div class="row" style="margin-left: 5%; padding-left: 5%;">
+                        <div class="col-md-6">
+                            @Html.Label("Business Areas", null, new { @class = "required my-label" })
+                            @{ var areas = ViewData["BusinessAreas"] as IList<BusinessArea>; }
+                            @foreach (var area in areas)
+                            {
+                                <div style="margin-left: 5%;">
+                                    <input type="checkbox" id="area" name="BusinessAreas" value="area" />
+                                    @Html.Label(area.Name, null, new { @class = "my-label" })
+
+                                </div>
+                            }
                         </div>
-                        <div class="row">
-                            <div class="col-6"><span class="fa fa-circle text-danger"></span> upper case</div>
-                            <div class="col-6"><span class="fa fa-circle text-danger"></span> 8-16 characters</div>
+                        <div class="col-md-6">
+                            <div class="form-group green-border-focus" style="width: 77%;">
+                                @Html.Label("Business Areas", null, new { @class = "required my-label" })
+                                @Html.TextAreaFor(m => m.Comment, new { @class = "form-control required my-label", @cols = 3, @rows = 5 })
+                                @Html.Label("LET US KNOW FOR WHICH NETWORK YOU ARE REQUESTING ACCESS, AND ANY OTHER COMMENTS YOU'D LIKE TO LEAV US", null, new { @class = "details" })
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
 
-            <!-- Step 3 -->
+            <!-- Address -->
             <div class="card2 ml-2" data-counter="3">
                 <input type="hidden" value="STEP 3: Address" />
                 <div class="row px-3 mt-3">
@@ -231,7 +239,7 @@
                 </div>
             </div>
 
-            <!-- Last 4 -->
+            <!-- Password -->
             <div class="card2 ml-2" data-counter="4">
                 <input type="hidden" value="STEP 4: Password" />
                 <div class="row px-3 mt-3">
@@ -249,7 +257,7 @@
                 </div>
             </div>
 
-            <!-- Last Step -->
+            <!-- Completed -->
             <div class="card2 ml-2 last-screen" data-counter="5">
                 <input type="hidden" value="STEP 5: Completed" />
                 <div class="row">

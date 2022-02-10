@@ -27,8 +27,7 @@ namespace FullStack_Task.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsChecked = table.Column<bool>(type: "bit", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -271,12 +270,26 @@ namespace FullStack_Task.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "eb8468e7-1935-4ae4-8e9a-acd435a9093a", "Admin", "ADMIN" });
+                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "119bd86c-8fcf-4999-83c9-8f9dd13047e1", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AcceptTerms", "AccessFailedCount", "AddressId", "CommentId", "Company", "ConcurrencyStamp", "Email", "EmailConfirmed", "Fax", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "MiddleName", "Mobile", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SalutationID", "SecurityStamp", "Title", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", true, 0, null, null, "Alexandros Platanios", "8ebbc213-a4ce-43e8-881d-b3a176d3b846", "alexandrosplatanios15@gmail.com", false, "6949277783", "Alexandros", "Platanios", false, null, "", "6949277783", "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAEAN+BZtHi1miWl64iNo90cn1oLCcj5L7MltOd09gP3/xkODaWKdxSdf2I8s1I86e2w==", null, "6949277783", false, null, "", "Software Developer", false, "alexandrosplatanios15@gmail.com" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", true, 0, null, null, "Alexandros Platanios", "4527acc1-daec-47ca-9653-0ad9e15fde2e", "alexandrosplatanios15@gmail.com", false, "6949277783", "Alexandros", "Platanios", false, null, "", "6949277783", "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAEMElnIa0xl2GSAY1Oc7l0j8jMauVIllKqErYokbxru74X5Yw8KTbXYSQvWTSw7tQAw==", null, "6949277783", false, null, "", "Software Developer", false, "alexandrosplatanios15@gmail.com" });
+
+            migrationBuilder.InsertData(
+                table: "BusinessAreas",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Finance" },
+                    { 2, "Operations" },
+                    { 3, "IT" },
+                    { 4, "Sales" },
+                    { 5, "Administrative" },
+                    { 6, "Lagel" },
+                    { 7, "Marketing" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Salutetions",
