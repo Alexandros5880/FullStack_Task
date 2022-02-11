@@ -35,7 +35,7 @@
         <div class="col-md-2 progress-container">
             <div class="card1">
                 <ul id="progressbar" class="text-center">
-                    <li class="active step0" data-counter="1"></li>
+                    <li class="active one" data-counter="1"></li>
                     <li class="step0 tow" data-counter="2"></li>
                     <li class="step0 three" data-counter="3"></li>
                     <li class="step0 four" data-counter="4"></li>
@@ -54,7 +54,7 @@
 
             <!-- Contact Info -->
             <div class="card2 first-screen show ml-2" data-counter="1">
-                <input type="hidden" value="STEP 1: Contact Info" />
+                <input name="title" type="hidden" value="STEP 1: Contact Info" />
 
 
                 @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
@@ -201,7 +201,7 @@
 
             <!-- Areas -->
             <div class="card2 ml-2" data-counter="2">
-                <input type="hidden" value="STEP 2: Areas" />
+                <input name="title" type="hidden" value="STEP 2: Areas" />
                 @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
                 {
                     <div asp-validation-summary="All" class="text-danger"></div>
@@ -231,7 +231,7 @@
 
             <!-- Address -->
             <div class="card2 ml-2" data-counter="3">
-                <input type="hidden" value="STEP 3: Address" />
+                <input name="title" type="hidden" value="STEP 3: Address" />
 
                 <div class="row">
                     <div class="col-md-6" style="margin: 0 auto;">
@@ -327,7 +327,7 @@
 
             <!-- Password -->
             <div class="card2 ml-2" data-counter="4">
-                <input type="hidden" value="STEP 4: Password" />
+                <input name="title" type="hidden" value="STEP 4: Password" />
 
                 <div class="row">
                     <div class="col-md-9" style="margin: 0 auto;">
@@ -395,20 +395,26 @@
 
                                 </div>
 
-                                <div class="col-md-6" style="text-align: right;">
-                                    <svg class="cloud-message-svg" width="333" height="333" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M 10 10 H 300 V 187 H 77 V 40 Z" fill="lightgray" />
-                                        <g>
-                                            <text class="warning" font-size="0.9em" font-weight="bold" x="31%" y="11%">
-                                                Instructions: &#9888;
-                                            </text>
-                                            <text class="warning" font-size="0.9em" x="31%" y="20%">Password must include:</text>
-                                            <text class="warning" font-size="0.9em" x="31%" y="25%">- at least 8 characters</text>
-                                            <text class="warning" font-size="0.9em" x="31%" y="30%">- an UPPER case letter</text>
-                                            <text class="warning" font-size="0.9em" x="31%" y="35%">- a lower case letter</text>
-                                            <text class="warning" font-size="0.9em" x="31%" y="40%">- a number</text>
-                                        </g>
-                                    </svg>
+                                <div class="col-md-6">
+
+                                    <div class="cloud-message">
+                                        <svg class="cloud-message-svg" width="333" height="200" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M 10 10 H 300 V 187 H 77 V 40 Z" fill="lightgray" />
+                                        </svg>
+                                        <div class="cloud-message-info">
+                                            <strong class="warning">Instructions:</strong>
+                                            <p>
+                                                Password must include: <br />
+                                                - at least 8 characters <br />
+                                                - an UPPER case letter <br />
+                                                - a lower case letter <br />
+                                                - a number <br />
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+
+
                                 </div>
 
                             </div>
@@ -422,7 +428,7 @@
 
             <!-- Completed -->
             <div class="card2 ml-2 last-screen" data-counter="5">
-                <input type="hidden" value="STEP 5: Completed" />
+                <input name="title" type="hidden" value="STEP 5: Completed" />
                 <div class="row">
                     <div class="row">
                         <div class="col-md-1">

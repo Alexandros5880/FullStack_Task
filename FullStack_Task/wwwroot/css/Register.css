@@ -129,14 +129,6 @@
 #progressbar li.active:after {
     background: darkgray;
 }
-/*active*/
-#progressbar li.active:before {
-    content: "\f303";
-    font-family: "Font Awesome 5 Free";
-    background: #00ADC8;
-    font-weight: 900;
-    color: white;
-}
 /*one*/
 #progressbar li.one:before {
     content: "1";
@@ -208,6 +200,14 @@
     color: white;
     background: #00ADC8;
 }
+/*active*/
+#progressbar li.active:before {
+    content: "\f303";
+    font-family: "Font Awesome 5 Free";
+    background: #00ADC8;
+    font-weight: 900;
+    color: white;
+}
 /* Proccess List Sceleton */
 
 
@@ -258,39 +258,51 @@
     margin: 1%;
     text-align: right;
 }
-
 .required::before {
     content: "*";
     font-weight: bold;
     color: #00ADC8;
     margin-right: 3px;
 }
-
 .details {
     float: left;
     font-size: 10px;
 }
-
 .my-lable {
     font-size: 13px;
 }
 .myinput {
     font-size: 13px;
 }
-
 .hidden {
     visibility: hidden;
 }
 
 
 
-
-.warning:after {
-    /*content: "/f06";*/
+/* Password Tab Instructions */
+.cloud-message {
+    position: relative;
+}
+.cloud-message-svg {
+    position: absolute;
+    left: 150px;
+}
+.cloud-message-info {
+    position: absolute;
+    left: 255px;
+    top: 25px;
+    width: 177px;
+}
+.cloud-message-info .warning:after {
+    content: "\f06a";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: darkred;
+    margin-left: 3px;
+    color: red;
 }
+/* Password Tab Instructions */
 
 
 
