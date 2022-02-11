@@ -1,10 +1,9 @@
-﻿using FullStack_Task.Areas.Identity.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FullStack_Task.Models.DTO
+namespace FullStack_Task.Areas.Identity.Models.ViewModels
 {
-    public class AresValidDto
+    public class AresValidViewModel
     {
         [Required]
         public ICollection<BusinessArea> BusinessAreas { get; set; }

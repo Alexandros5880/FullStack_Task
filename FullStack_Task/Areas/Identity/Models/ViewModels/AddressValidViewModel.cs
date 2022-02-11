@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FullStack_Task.Models.DTO
+namespace FullStack_Task.Areas.Identity.Models.ViewModels
 {
-    public class AddressValidDto
+    public class AddressValidViewModel
     {
         [Required]
         public string Country { get; set; } = "";

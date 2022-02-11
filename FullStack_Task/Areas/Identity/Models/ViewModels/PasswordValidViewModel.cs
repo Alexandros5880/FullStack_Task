@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FullStack_Task.Models.DTO
+namespace FullStack_Task.Areas.Identity.Models.ViewModels
 {
-    public class PasswordValidDto
+    public class PasswordValidViewModel
     {
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -18,5 +18,8 @@ namespace FullStack_Task.Models.DTO
         [Required]
         [StringLength(4)]
         public string CaptchaCode { get; set; }
+
+        [Required]
+        public bool AcceptTerms { get; set; }
     }
 }

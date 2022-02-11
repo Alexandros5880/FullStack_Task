@@ -1,9 +1,8 @@
-﻿using FullStack_Task.Areas.Identity.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace FullStack_Task.Models.DTO
+namespace FullStack_Task.Areas.Identity.Models.ViewModels
 {
-    public class ContactValidDto
+    public class ContactValidViewModel
     {
         [Required]
         public Salutation SalutationId { get; set; }
