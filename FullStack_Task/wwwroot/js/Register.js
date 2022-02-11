@@ -20,6 +20,9 @@
 
 
 
+
+
+
     // Next button
     $(".next-button").click(function () {
         if (counter < 4) {
@@ -30,12 +33,38 @@
             // Validation system
             // If Validate Go To Next
 
+            
 
             
 
             // Get Current And Next Tab
             current_fs = $(".steps-container").find(`[data-counter='${counter}']`);
             next_fs = $(".steps-container").find(`[data-counter='${counter}']`).next();
+
+
+
+
+
+
+            // Selected Tab Form Submited
+            var form = $(current_fs).find(`form`).get(0);
+
+            //var formData = new FormData(form)
+            //for (var pair of formData.entries()) {
+            //    console.log(pair[0] + ', ' + pair[1]);
+            //}
+
+            form.submit(function (event) {
+                alert("Handler for .submit() called.");
+                event.preventDefault();
+            });
+
+
+
+
+
+
+            
 
 
             // Update Tab Sub Title Based On Current Tab
@@ -147,6 +176,13 @@
         }
 
     });
+
+
+
+
+    
+
+
 
 
 

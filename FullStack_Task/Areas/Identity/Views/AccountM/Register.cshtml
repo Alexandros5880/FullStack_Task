@@ -27,6 +27,7 @@
 <h6 class="display-screen"></h6>
 <br />
 
+<iframe name="forms_iframe" style="display: none;"></iframe>
 
 <div class="container-fluid my-form">
     <div class="d-flex flex-md-row px-3 mt-4 flex-column-reverse my-form">
@@ -57,8 +58,9 @@
                 <input name="title" type="hidden" value="STEP 1: Contact Info" />
 
 
-                @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
+                @using (Html.BeginForm("ContactValid", "AccountM", new { area = "Identity" }, FormMethod.Post, null, new { @class = "registration-form", target = "forms_iframe" }))
                 {
+                    @Html.AntiForgeryToken()
                     <div asp-validation-summary="All" class="text-danger"></div>
 
                     <div class="row">
@@ -202,8 +204,9 @@
             <!-- Areas -->
             <div class="card2 ml-2" data-counter="2">
                 <input name="title" type="hidden" value="STEP 2: Areas" />
-                @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
+                @using (Html.BeginForm("AreasValid", "AccountM", new { area = "Identity" }, FormMethod.Post, null, new { @class = "registration-form", target = "forms_iframe" }))
                 {
+                    @Html.AntiForgeryToken()
                     <div asp-validation-summary="All" class="text-danger"></div>
 
                     <div class="row" style="margin-left: 5%; padding-left: 5%;">
@@ -236,8 +239,9 @@
                 <div class="row">
                     <div class="col-md-6" style="margin: 0 auto;">
 
-                        @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
+                        @using (Html.BeginForm("AddressValid", "AccountM", new { area = "Identity" }, FormMethod.Post, null, new { @class = "registration-form", target = "forms_iframe" }))
                         {
+                            @Html.AntiForgeryToken()
                             <div asp-validation-summary="All" class="text-danger"></div>
 
                             <div class="form-group my-form-group">
@@ -332,8 +336,9 @@
                 <div class="row">
                     <div class="col-md-9" style="margin: 0 auto;">
 
-                        @using (Html.BeginForm("Index", "Account", new { area = "Identity" }, FormMethod.Post))
+                        @using (Html.BeginForm("PasswordValid", "AccountM", new { area = "Identity" }, FormMethod.Post, null, new { @class = "registration-form", target = "forms_iframe" }))
                         {
+                            @Html.AntiForgeryToken()
                             <div asp-validation-summary="All" class="text-danger"></div>
 
                             <div class="row">
@@ -412,7 +417,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    
+
 
 
                                 </div>

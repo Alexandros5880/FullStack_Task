@@ -1,5 +1,6 @@
 ﻿using FullStack_Task.Areas.Identity.Models.ViewModels;
 using FullStack_Task.HorizontalClasses.Interfaces;
+using FullStack_Task.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -33,5 +34,43 @@ namespace FullStack_Task.Areas.Identity.Controllers
             return View();
         }
 
+
+
+        // validation Methods
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ContactValid(ContactValidDto  obj)
+        {
+            if (obj == null)
+                return BadRequest();
+            return Ok();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AreasValid(AresValidDto obj)
+        {
+            if (obj == null)
+                return BadRequest();
+            return Ok();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddressValid(AddressValidDto obj)
+        {
+            if (obj == null)
+                return BadRequest();
+            return Ok();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult PasswordValid(PasswordValidDto obj)
+        {
+            if (obj == null)
+                return BadRequest();
+            return Ok();
+        }
     }
 }
