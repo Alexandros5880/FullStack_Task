@@ -1,0 +1,105 @@
+﻿@model FullStack_Task.Areas.Identity.Models.ViewModels.AddressValidViewModel
+@using FullStack_Task.Areas.Identity.Models;
+@using FullStack_Task.Models.OtherModels;
+@using FullStack_Task.HorizontalClasses;
+
+
+
+@{
+    var countries = ViewData["Countries"] as IList<Country>;
+}
+
+
+<div class="row">
+    <div class="col-md-6" style="margin: 0 auto;">
+
+        <iframe name="forms_iframe" style="display: none;"></iframe>
+
+        <form action="/identity/api/validation/v1/AddressValid" class="registration-form" method="post" target="forms_iframe">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("COUNTRY:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Name", "Name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
+                        @Html.ValidationMessageFor(m => m.Country, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("OFFICE NAME:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.OfficeName, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.OfficeName, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("ADDRESS:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Street, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.Street, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("POSTAL CODE:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.PostalCode, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("CITY", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("STATE:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @*@Html.DropDownListFor(m => m.State, new SelectList(string.Empty, "Name", "Name"), "select", new { @class = "form-control dropdown", @id = "state-selection" })*@
+                        <div id="state-drop-down">
+                            <select class="form-control dropdown" id="State" name="State">
+                                <option value="">Select Country</option>
+                            </select>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.State, null, new { @class = "text-danger state-validation-message" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group" style="display: none;">
+                <input type="submit" value="Save" />
+            </div>
+        </form>
+
+    </div>
+</div>

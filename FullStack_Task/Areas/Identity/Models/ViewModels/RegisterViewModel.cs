@@ -5,7 +5,7 @@
 
         public ContactValidViewModel Contact { get; set; }
 
-        public AresValidViewModel Areas { get; set; }
+        public AreasValidViewModel Areas { get; set; }
 
         public AddressValidViewModel Address { get; set; }
 

@@ -42,14 +42,12 @@ namespace FullStack_Task.Areas.Identity.Repositories
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
             return await this._context.Salutetions
-                                    .Include(s => s.Users)
                                     .FirstOrDefaultAsync(s => s.ID == id);
         }
 
         public async Task<ICollection<Salutation>> GetAll()
         {
             return await this._context.Salutetions
-                                        .Include(s => s.Users)
                                         .ToListAsync();
         }
 

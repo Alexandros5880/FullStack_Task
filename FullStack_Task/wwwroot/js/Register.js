@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     var current_fs, next_fs, previous_fs;
-    var counter = 0;
+    var counter = 1;
 
 
 
@@ -21,17 +21,16 @@
 
 
 
+    
+    $("*").validate();
+
+
 
 
     // Next button
     $(".next-button").click(function () {
-        if (counter < 4) {
-            counter++;
-
-            //$(".display-screen")
-
-            // Validation system
-            // If Validate Go To Next
+        if (counter == 1 || counter < 4) {
+            
 
             
 
@@ -47,67 +46,37 @@
 
 
             // Selected Tab Form Submited
-            var form = $(current_fs).find(`form`).get(0);
+            var form = $(current_fs).find(`form`);
+            $("*").resetValidation();
+            if (form.valid()) {
 
-            //var formData = new FormData(form)
-            //for (var pair of formData.entries()) {
-            //    console.log(pair[0] + ', ' + pair[1]);
-            //}
-
-            form.submit(function (event) {
-                alert("Handler for .submit() called.");
-                event.preventDefault();
-            });
-
-
-
-
-
-
-            
-
-
-            // Update Tab Sub Title Based On Current Tab
-            var tabTitle = $(next_fs).children('input[name="title"]').val();
-            $('.display-screen').html(tabTitle)
-
-
-            // Display The curent Tab Only
-            $(".prev").css({ 'display': 'block' });
-            $(current_fs).removeClass("show");
-            $(next_fs).addClass("show");
-            if ($(".show").hasClass("last-screen")) {
-                $(".next-button").css({ 'display': 'none' });
-            }
-            current_fs.animate({}, {
-                step: function () {
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
+                // If Area Get All Selected Checkboxes
+                if (counter == 2) {
+                    var selectedAreasIds = [];
+                    $.each($("input.area:checked"), function () {
+                        selectedAreasIds.push($(this).val());
                     });
-                    next_fs.css({
-                        'display': 'block'
-                    });
+                    if (selectedAreasIds.length > 0) {
+                        counter++;
+                        renderUIonNext(current_fs, next_fs);
+                    } else {
+                        $('.areas-validation-message').html("At list one Buisnes Area must be selected.");
+                    }
                 }
-            });
-
-            // Activate The Right List Node Based On Current Tab
-            var current_proccess_tab = $("#progressbar li").eq($(".card2").index(next_fs));
-            $(current_proccess_tab).prev().removeClass("active");
-            if (counter == 1)
-                $(current_proccess_tab).prev().addClass("onec");
-            if (counter == 2)
-                $(current_proccess_tab).prev().addClass("towc");
-            if (counter == 3)
-                $(current_proccess_tab).prev().addClass("threec");
-            if (counter == 4)
-                $(current_proccess_tab).prev().addClass("fourc");
-            $(current_proccess_tab).removeClass("one");
-            $(current_proccess_tab).removeClass("tow");
-            $(current_proccess_tab).removeClass("three");
-            $(current_proccess_tab).removeClass("four");
-            $(current_proccess_tab).removeClass("five");
-            $(current_proccess_tab).addClass("active");
+                // Address State Validation
+                else if (counter == 3) {
+                    if ($('#State').val()) {
+                        counter++;
+                        renderUIonNext(current_fs, next_fs);
+                    } else {
+                        $('.state-validation-message').html("State is required.");
+                    }
+                }
+                else {
+                    counter++;
+                    renderUIonNext(current_fs, next_fs);
+                }
+            }
 
         }
     });
@@ -119,60 +88,9 @@
 
             // Get Current And Previus Tab
             current_fs = $(".show");
-            previous_fs = $(".show").prev();
+            previous_fs = $(".show").prev();   
 
-            // Update Tab Sub Title Based On Current Tab
-            var tabTitle = $(previous_fs).children('input[name="title"]').val();
-            $('.display-screen').html(tabTitle);
-
-            // Display The curent Tab Only
-            $(current_fs).removeClass("show");
-            $(previous_fs).addClass("show");
-            $(".prev").css({ 'display': 'block' });
-            if ($(".show").hasClass("first-screen")) {
-                $(".prev").css({ 'display': 'none' });
-            }
-            if (!$(".show").hasClass("last-screen")) {
-                $(".next-button").css({ 'display': 'block' });
-            }
-            current_fs.animate({}, {
-                step: function () {
-
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-
-                    previous_fs.css({
-                        'display': 'block'
-                    });
-                }
-            });
-
-            // Activate The Right List Node Based On Current Tab
-            var current_proccess_tab = $("#progressbar li").eq($(".card2").index(current_fs));
-            $(current_proccess_tab).removeClass("active");
-            var previus_proccess_tab = $("#progressbar li").eq($(".card2").index(previous_fs));
-            $(previus_proccess_tab).removeClass("one");
-            $(previus_proccess_tab).removeClass("tow");
-            $(previus_proccess_tab).removeClass("three");
-            $(previus_proccess_tab).removeClass("four");
-            $(previus_proccess_tab).removeClass("five");
-            $(previus_proccess_tab).removeClass("onec");
-            $(previus_proccess_tab).removeClass("towc");
-            $(previus_proccess_tab).removeClass("threec");
-            $(previus_proccess_tab).removeClass("fourc");
-            $(previus_proccess_tab).removeClass("fivec");
-            $(previus_proccess_tab).addClass("active");
-            if (counter == 0)
-                $(current_proccess_tab).addClass("tow");
-            if (counter == 1)
-                $(current_proccess_tab).addClass("three");
-            if (counter == 2)
-                $(current_proccess_tab).addClass("four");
-            if (counter == 3)
-                $(current_proccess_tab).addClass("five");
-
+            renderUionBack(current_fs, previous_fs);
         }
 
     });
@@ -186,6 +104,104 @@
 
 
 
+    function renderUIonNext(current_fs, next_fs) {
+        // Update Tab Sub Title Based On Current Tab
+        var tabTitle = $(next_fs).children('input[name="title"]').val();
+        $('.display-screen').html(tabTitle)
+
+
+        // Display The curent Tab Only
+        $(".prev").css({ 'display': 'block' });
+        $(current_fs).removeClass("show");
+        $(next_fs).addClass("show");
+        if ($(".show").hasClass("last-screen")) {
+            $(".next-button").css({ 'display': 'none' });
+        }
+        current_fs.animate({}, {
+            step: function () {
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({
+                    'display': 'block'
+                });
+            }
+        });
+
+        // Activate The Right List Node Based On Current Tab
+        var current_proccess_tab = $("#progressbar li").eq($(".card2").index(next_fs));
+        $(current_proccess_tab).prev().removeClass("active");
+        if (counter == 1)
+            $(current_proccess_tab).prev().addClass("onec");
+        if (counter == 2)
+            $(current_proccess_tab).prev().addClass("towc");
+        if (counter == 3)
+            $(current_proccess_tab).prev().addClass("threec");
+        if (counter == 4)
+            $(current_proccess_tab).prev().addClass("fourc");
+        $(current_proccess_tab).removeClass("one");
+        $(current_proccess_tab).removeClass("tow");
+        $(current_proccess_tab).removeClass("three");
+        $(current_proccess_tab).removeClass("four");
+        $(current_proccess_tab).removeClass("five");
+        $(current_proccess_tab).addClass("active");
+    }
+
+
+    function renderUionBack(current_fs, previous_fs) {
+        // Update Tab Sub Title Based On Current Tab
+        var tabTitle = $(previous_fs).children('input[name="title"]').val();
+        $('.display-screen').html(tabTitle);
+
+        // Display The curent Tab Only
+        $(current_fs).removeClass("show");
+        $(previous_fs).addClass("show");
+        $(".prev").css({ 'display': 'block' });
+        if ($(".show").hasClass("first-screen")) {
+            $(".prev").css({ 'display': 'none' });
+        }
+        if (!$(".show").hasClass("last-screen")) {
+            $(".next-button").css({ 'display': 'block' });
+        }
+        current_fs.animate({}, {
+            step: function () {
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+
+                previous_fs.css({
+                    'display': 'block'
+                });
+            }
+        });
+
+        // Activate The Right List Node Based On Current Tab
+        var current_proccess_tab = $("#progressbar li").eq($(".card2").index(current_fs));
+        $(current_proccess_tab).removeClass("active");
+        var previus_proccess_tab = $("#progressbar li").eq($(".card2").index(previous_fs));
+        $(previus_proccess_tab).removeClass("one");
+        $(previus_proccess_tab).removeClass("tow");
+        $(previus_proccess_tab).removeClass("three");
+        $(previus_proccess_tab).removeClass("four");
+        $(previus_proccess_tab).removeClass("five");
+        $(previus_proccess_tab).removeClass("onec");
+        $(previus_proccess_tab).removeClass("towc");
+        $(previus_proccess_tab).removeClass("threec");
+        $(previus_proccess_tab).removeClass("fourc");
+        $(previus_proccess_tab).removeClass("fivec");
+        $(previus_proccess_tab).addClass("active");
+        if (counter == 0)
+            $(current_proccess_tab).addClass("tow");
+        if (counter == 1)
+            $(current_proccess_tab).addClass("three");
+        if (counter == 2)
+            $(current_proccess_tab).addClass("four");
+        if (counter == 3)
+            $(current_proccess_tab).addClass("five");
+    }
 
 
 
@@ -206,7 +222,7 @@
             url: `../../api/Geography/states/${countryName}`,
             type: 'GET',
             success: function (response) {
-                var html = `<select class="form-control dropdown" id="state-selection" name="Address.State"><option value="">select</option>`;
+                var html = `<select class="form-control dropdown" id="State" name="State"><option value="">select</option>`;
                 response.forEach(function (state) {
                     html += `<option value="${state.name}">${state.name}</option>`;
                 });
@@ -215,13 +231,27 @@
             },
             error: function (response) {
                 $('#state-drop-down').html(`
-                            <select class="form-control dropdown" id="state-selection" name="Address.State">
+                            <select class="form-control dropdown" id="State" name="State">
                                 <option value="">Select Country</option>
                             </select>
                         `);
             }
         });
     });
+
+
+
+
+
+    // I f Area CheckBox Checked
+    $("input.area").on("change", function () {
+        if ($(this).is(':checked')) {
+            
+        } else {
+            
+        }
+    });
+
 
 
 
@@ -233,11 +263,49 @@
 
 
 
+// Serial Object from Form
+(function ($) {
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+})(jQuery);
 
 
 
 
+//clear validation on reset button clicked
+(function ($) {
+    //re-set all client validation given a jQuery selected form or child
+    $.fn.resetValidation = function () {
+        var $form = this.closest('form');
 
+        //reset jQuery Validate's internals
+        $form.validate().resetForm();
 
+        //reset unobtrusive validation summary, if it exists
+        $form.find("[data-valmsg-summary=true]")
+            .removeClass("validation-summary-errors")
+            .addClass("validation-summary-valid")
+            .find("ul").empty();
 
+        //reset unobtrusive field level, if it exists
+        $form.find("[data-valmsg-replace]")
+            .removeClass("field-validation-error")
+            .addClass("field-validation-valid")
+            .empty();
 
+        return $form;
+    };
+})(jQuery);

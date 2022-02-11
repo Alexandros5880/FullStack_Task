@@ -1,0 +1,47 @@
+﻿@model FullStack_Task.Areas.Identity.Models.ViewModels.AreasValidViewModel
+@using FullStack_Task.Areas.Identity.Models;
+@using FullStack_Task.Models.OtherModels;
+@using FullStack_Task.HorizontalClasses;
+
+
+
+@{
+    var areas = ViewData["Areas"] as IList<BusinessArea>;
+}
+
+
+
+<iframe name="forms_iframe" style="display: none;"></iframe>
+
+
+<form action="/identity/api/validation/v1/AreasValid" class="registration-form" method="post" target="forms_iframe">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="row" style="margin-left: 5%; padding-left: 5%;">
+        <div class="col-md-6">
+            @Html.Label("Business Areas", null, new { @class = "required my-label" })
+            @foreach (var area in areas)
+            {
+                <div style="margin-left: 5%;">
+                    <input type="checkbox" class="area" id="area" name="Areas.BusinessAreas" value="@area.ID" />
+                    @Html.Label(area.Name, null, new { @class = "my-label" })
+                </div>
+            }
+            @Html.ValidationMessageFor(m => m.BusinessAreas, null, new { @class = "text-danger areas-validation-message" })
+        </div>
+        <div class="col-md-6">
+            <div class="form-group green-border-focus" style="width: 77%;">
+                @Html.Label("Business Areas", null, new { @class = "required my-label" })
+                @Html.TextAreaFor(m => m.Comment, new { @class = "form-control required my-label", @cols = 3, @rows = 5 })
+                @Html.Label("LET US KNOW FOR WHICH NETWORK YOU ARE REQUESTING ACCESS, AND ANY OTHER COMMENTS YOU'D LIKE TO LEAV US", null, new { @class = "details" })
+                @Html.ValidationMessageFor(m => m.Comment, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group my-form-group" style="display: none;">
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+</form>
+
+

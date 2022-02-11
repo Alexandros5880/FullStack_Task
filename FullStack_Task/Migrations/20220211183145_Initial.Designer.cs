@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStack_Task.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220210115220_Initial")]
+    [Migration("20220211183145_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,18 @@ namespace FullStack_Task.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            City = "Athens",
+                            Country = "Greece",
+                            OfficeName = "Home",
+                            PostalCode = "16673",
+                            State = "Fleming",
+                            Street = "Attica"
+                        });
                 });
 
             modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.ApplicationRole", b =>
@@ -101,7 +113,7 @@ namespace FullStack_Task.Migrations
                         new
                         {
                             Id = "ad376a8f-9eab-4bb9-9fca-30b01540f445",
-                            ConcurrencyStamp = "119bd86c-8fcf-4999-83c9-8f9dd13047e1",
+                            ConcurrencyStamp = "ce01477f-bea7-44fa-85d4-53fddf7bb70a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -125,6 +137,7 @@ namespace FullStack_Task.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Company")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -139,12 +152,15 @@ namespace FullStack_Task.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Fax")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -157,6 +173,7 @@ namespace FullStack_Task.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mobile")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
@@ -168,12 +185,10 @@ namespace FullStack_Task.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -182,13 +197,14 @@ namespace FullStack_Task.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("SalutationID")
+                    b.Property<int>("SalutationId")
                         .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -212,7 +228,7 @@ namespace FullStack_Task.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("SalutationID");
+                    b.HasIndex("SalutationId");
 
                     b.ToTable("AspNetUsers");
 
@@ -223,7 +239,7 @@ namespace FullStack_Task.Migrations
                             AcceptTerms = true,
                             AccessFailedCount = 0,
                             Company = "Alexandros Platanios",
-                            ConcurrencyStamp = "4527acc1-daec-47ca-9653-0ad9e15fde2e",
+                            ConcurrencyStamp = "48e0d581-5e12-485d-8757-46f76ffac49a",
                             Email = "alexandrosplatanios15@gmail.com",
                             EmailConfirmed = false,
                             Fax = "6949277783",
@@ -235,9 +251,10 @@ namespace FullStack_Task.Migrations
                             NormalizedEmail = "alexandrosplatanios15@gmail.com",
                             NormalizedUserName = "alexandrosplatanios15@gmail.com",
                             Password = "-Platanios719791",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMElnIa0xl2GSAY1Oc7l0j8jMauVIllKqErYokbxru74X5Yw8KTbXYSQvWTSw7tQAw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGxXVJkngAB4FrLhSK4FlAHwSO5/zizWuJTL/VSWUc5q1jZml8nX6fuQqEwzFx5UCg==",
                             PhoneNumber = "6949277783",
                             PhoneNumberConfirmed = false,
+                            SalutationId = 1,
                             SecurityStamp = "",
                             Title = "Software Developer",
                             TwoFactorEnabled = false,
@@ -521,13 +538,17 @@ namespace FullStack_Task.Migrations
                         .WithMany()
                         .HasForeignKey("CommentId");
 
-                    b.HasOne("FullStack_Task.Areas.Identity.Models.Salutation", null)
+                    b.HasOne("FullStack_Task.Areas.Identity.Models.Salutation", "Salutation")
                         .WithMany("Users")
-                        .HasForeignKey("SalutationID");
+                        .HasForeignKey("SalutationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 
                     b.Navigation("Comment");
+
+                    b.Navigation("Salutation");
                 });
 
             modelBuilder.Entity("FullStack_Task.Areas.Identity.Models.Comment", b =>

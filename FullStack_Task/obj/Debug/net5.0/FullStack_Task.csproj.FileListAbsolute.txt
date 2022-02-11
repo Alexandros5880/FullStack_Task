@@ -464,6 +464,10 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\AccountM\Register.cshtml.g.cs
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\AccountM\_Address.cshtml.g.cs
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\AccountM\_Areas.cshtml.g.cs
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\AccountM\_ContactInfo.cshtml.g.cs
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\AccountM\_Password.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Areas\Identity\Views\_ViewStart.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -481,3 +485,4 @@ F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_T
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\ref\FullStack_Task.dll
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.pdb
 F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.genruntimeconfig.cache
+F:\Programming\Pojects\WORKING\FULLSTACK_TASK_PROJECT\FullStack_Task\FullStack_Task\obj\Debug\net5.0\FullStack_Task.csproj.AssemblyReference.cache

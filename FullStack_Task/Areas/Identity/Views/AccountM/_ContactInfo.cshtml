@@ -1,0 +1,156 @@
+﻿@model FullStack_Task.Areas.Identity.Models.ViewModels.ContactValidViewModel
+@using FullStack_Task.Areas.Identity.Models;
+@using FullStack_Task.Models.OtherModels;
+@using FullStack_Task.HorizontalClasses;
+
+
+@{ 
+    var salutations = ViewData["Salutations"] as IList<Salutation>;
+}
+
+
+<iframe name="forms_iframe" style="display: none;"></iframe>
+
+<form action="/identity/api/validation/v1/ContactValid" class="registration-form" method="post" target="forms_iframe" >
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("SALUTATION:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(m => m.SalutationId, new SelectList(@salutations, "ID", "Name"), "select", new { @class = "form-control myinput" })
+                        @Html.Label("EMAIL WILL BE YOUR LOGIN", null, new { @class = "details hidden" })
+                        @Html.ValidationMessageFor(m => m.SalutationId, null, new { @class="text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("FIRSTNAME:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("MIDDLE NAME:", null, new { @class = " my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.MiddleName, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("LAST NAME:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("COMPANY:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Company, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.Company, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("TITLE:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("EMAIL:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control myinput" })
+                        @Html.Label("EMAIL WILL BE YOUR LOGIN", null, new { @class = "details" })
+                        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("CONFIRM EMAIL:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.ConfirmEmail, new { @class = "form-control myinput" })
+                        @Html.ValidationMessageFor(m => m.ConfirmEmail, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("PHONE:", null, new { @class = "required my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control phone myinput" })
+                        @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("FAX:", null, new { @class = " my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Fax, new { @class = "form-control fax myinput" })
+                        @Html.ValidationMessageFor(m => m.Fax, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Label("MOBILE:", null, new { @class = " my-label" })
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control mobile myinput" })
+                        @Html.ValidationMessageFor(m => m.Mobile, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-form-group" style="display: none;">
+                <input type="submit" value="Save" />
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+

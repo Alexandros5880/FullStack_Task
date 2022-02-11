@@ -24,17 +24,47 @@ namespace FullStack_Task.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-
             // Configure Relationships
 
 
-
+            base.OnModelCreating(modelBuilder);
 
 
 
             // Create Test Data
+
+            // Create Test Salutaions
+            var salutation = new Salutation() { ID = 1, Name = "Salutation 1" };
+            modelBuilder.Entity<Salutation>().HasData(
+                salutation
+            );
+            modelBuilder.Entity<Salutation>().HasData(
+                new Salutation() { ID = 2, Name = "Salutation 2" }
+            );
+            modelBuilder.Entity<Salutation>().HasData(
+                new Salutation() { ID = 3, Name = "Salutation 3" }
+            );
+            modelBuilder.Entity<Salutation>().HasData(
+                new Salutation() { ID = 4, Name = "Salutation 4" }
+            );
+            modelBuilder.Entity<Salutation>().HasData(
+                new Salutation() { ID = 5, Name = "Salutation 5" }
+            );
+
+            // Create Address
+            var address = new Address() 
+            { 
+                ID = 1,
+                Country = "Greece",
+                OfficeName = "Home",
+                State = "Fleming",
+                PostalCode = "16673",
+                City = "Athens",
+                Street = "Attica"
+            };
+            modelBuilder.Entity<Address>().HasData(
+                address
+            );
 
 
             // Create One User And One Role
@@ -55,6 +85,7 @@ namespace FullStack_Task.Data
                 new ApplicationUser()
                 {
                     Id = USER_ID,
+                    SalutationId = 1,
                     FirstName = "Alexandros",
                     LastName = "Platanios",
                     MiddleName = "",
@@ -85,22 +116,7 @@ namespace FullStack_Task.Data
                 }
             );
 
-            // Create Test Salutaions
-            modelBuilder.Entity<Salutation>().HasData(
-                new Salutation() { ID = 1, Name = "Salutation 1" }
-            );
-            modelBuilder.Entity<Salutation>().HasData(
-                new Salutation() { ID = 2, Name = "Salutation 2" }
-            );
-            modelBuilder.Entity<Salutation>().HasData(
-                new Salutation() { ID = 3, Name = "Salutation 3" }
-            );
-            modelBuilder.Entity<Salutation>().HasData(
-                new Salutation() { ID = 4, Name = "Salutation 4" }
-            );
-            modelBuilder.Entity<Salutation>().HasData(
-                new Salutation() { ID = 5, Name = "Salutation 5" }
-            );
+            
 
 
 

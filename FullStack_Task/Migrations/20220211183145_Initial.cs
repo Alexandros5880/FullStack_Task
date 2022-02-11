@@ -73,19 +73,18 @@ namespace FullStack_Task.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Fax = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Company = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Fax = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Company = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AcceptTerms = table.Column<bool>(type: "bit", nullable: false),
+                    SalutationId = table.Column<int>(type: "int", nullable: false),
                     CommentId = table.Column<int>(type: "int", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: true),
-                    SalutationID = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -105,11 +104,11 @@ namespace FullStack_Task.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Salutetions_SalutationID",
-                        column: x => x.SalutationID,
+                        name: "FK_AspNetUsers_Salutetions_SalutationId",
+                        column: x => x.SalutationId,
                         principalTable: "Salutetions",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -268,14 +267,14 @@ namespace FullStack_Task.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "119bd86c-8fcf-4999-83c9-8f9dd13047e1", "Admin", "ADMIN" });
+                table: "Addresses",
+                columns: new[] { "ID", "City", "Country", "OfficeName", "PostalCode", "State", "Street", "UserId" },
+                values: new object[] { 1, "Athens", "Greece", "Home", "16673", "Fleming", "Attica", null });
 
             migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AcceptTerms", "AccessFailedCount", "AddressId", "CommentId", "Company", "ConcurrencyStamp", "Email", "EmailConfirmed", "Fax", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "MiddleName", "Mobile", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SalutationID", "SecurityStamp", "Title", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", true, 0, null, null, "Alexandros Platanios", "4527acc1-daec-47ca-9653-0ad9e15fde2e", "alexandrosplatanios15@gmail.com", false, "6949277783", "Alexandros", "Platanios", false, null, "", "6949277783", "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAEMElnIa0xl2GSAY1Oc7l0j8jMauVIllKqErYokbxru74X5Yw8KTbXYSQvWTSw7tQAw==", null, "6949277783", false, null, "", "Software Developer", false, "alexandrosplatanios15@gmail.com" });
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "ad376a8f-9eab-4bb9-9fca-30b01540f445", "ce01477f-bea7-44fa-85d4-53fddf7bb70a", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "BusinessAreas",
@@ -302,6 +301,11 @@ namespace FullStack_Task.Migrations
                     { 4, "Salutation 4" },
                     { 5, "Salutation 5" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AcceptTerms", "AccessFailedCount", "AddressId", "CommentId", "Company", "ConcurrencyStamp", "Email", "EmailConfirmed", "Fax", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "MiddleName", "Mobile", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SalutationId", "SecurityStamp", "Title", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", true, 0, null, null, "Alexandros Platanios", "48e0d581-5e12-485d-8757-46f76ffac49a", "alexandrosplatanios15@gmail.com", false, "6949277783", "Alexandros", "Platanios", false, null, "", "6949277783", "alexandrosplatanios15@gmail.com", "alexandrosplatanios15@gmail.com", "-Platanios719791", "AQAAAAEAACcQAAAAEGxXVJkngAB4FrLhSK4FlAHwSO5/zizWuJTL/VSWUc5q1jZml8nX6fuQqEwzFx5UCg==", "6949277783", false, 1, "", "Software Developer", false, "alexandrosplatanios15@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -361,9 +365,9 @@ namespace FullStack_Task.Migrations
                 column: "CommentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_SalutationID",
+                name: "IX_AspNetUsers_SalutationId",
                 table: "AspNetUsers",
-                column: "SalutationID");
+                column: "SalutationId");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",

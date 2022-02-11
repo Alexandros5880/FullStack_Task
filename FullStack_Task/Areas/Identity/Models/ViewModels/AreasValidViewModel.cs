@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FullStack_Task.Areas.Identity.Models.ViewModels
 {
-    public class AresValidViewModel
+    public class AreasValidViewModel
     {
         [Required]
         public ICollection<BusinessArea> BusinessAreas { get; set; }

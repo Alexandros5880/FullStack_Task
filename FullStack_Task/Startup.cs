@@ -1,3 +1,5 @@
+using AutoMapper;
+using FullStack_Task.Areas.Identity.MappingProfile;
 using FullStack_Task.Areas.Identity.Models;
 using FullStack_Task.Areas.Identity.Repositories;
 using FullStack_Task.Areas.Identity.Repositories.Interfaces;
@@ -41,6 +43,15 @@ namespace FullStack_Task
             services.AddControllersWithViews();
 
             services.AddRazorPages();
+
+
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
 
 
