@@ -87,9 +87,18 @@ body {
 
 /* Validation Message Icon
 ----------------------------------*/
-.ui-state-error-icon {
+.ui-state-error-icon, .areas-validation-message, .captcha-validation-message {
     display: inline-block;
     width: 16px;
     height: 16px;
     background-image: url("/images/validation_error.ico");
+}
+
+
+.field-validation-error, .areas-validation-message, .captcha-validation-message {
+    font-size: smaller;
+    /* Hide the text. */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }

@@ -77,8 +77,8 @@
         if (replace) {
 
             // Do not display the error message
-            //container.empty();
-            //error.removeClass("input-validation-error").appendTo(container);
+            container.empty();
+            error.removeClass("input-validation-error").appendTo(container);
 
             // If the error message is an empty string, remove the classes
             // from the container that displays the error icon.  Otherwise

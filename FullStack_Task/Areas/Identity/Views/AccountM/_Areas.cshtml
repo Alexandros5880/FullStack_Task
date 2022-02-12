@@ -27,15 +27,18 @@
                     @Html.Label(area.Name, null, new { @class = "my-label" })
                 </div>
             }
-            <span asp-validation-for="Age" class="text-danger areas-validation-message"></span>
-            @*@Html.ValidationMessageFor(m => m.BusinessAreas, null, new { @class = "text-danger areas-validation-message" })*@
+            <span class="target">
+                <span asp-validation-for="BusinessAreas" class="text-danger areas-validation-message">At list one Buisnes Area must be selected.</span>
+            </span>
         </div>
         <div class="col-md-6">
             <div class="form-group green-border-focus" style="width: 77%;">
                 @Html.Label("Business Areas", null, new { @class = "required my-label" })
                 @Html.TextAreaFor(m => m.Comment, new { @class = "form-control required my-label", @cols = 3, @rows = 5 })
                 @Html.Label("LET US KNOW FOR WHICH NETWORK YOU ARE REQUESTING ACCESS, AND ANY OTHER COMMENTS YOU'D LIKE TO LEAV US", null, new { @class = "details" })
-                @Html.ValidationMessageFor(m => m.Comment, null, new { @class = "text-danger" })
+                <span class="target">
+                    @Html.ValidationMessageFor(m => m.Comment, null, new { @class = "text-danger" })
+                </span>
             </div>
         </div>
         <div class="form-group my-form-group" style="display: none;">

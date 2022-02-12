@@ -8,6 +8,14 @@
         $(".prev").css({ 'display': 'none' });
     }
 
+
+    // Areas Validation Message Display None
+    $('.areas-validation-message').css("display", "none");
+
+    // CaptCha Validation Error Display None
+    $(".captcha-validation-message").css("display", "none");
+
+
     // Update The Tab Title With The Title Of The First Tab
     current_fs = $(".steps-container").find(`[data-counter='${1}']`);
     var tabTitle = $(current_fs).children('input[name="title"]').val();
@@ -33,16 +41,10 @@
                 }
                 // Areas
                 else if (counter == 2) {
-                    var selectedAreasIds = [];
-                    $.each($("input.area:checked"), function () {
-                        selectedAreasIds.push($(this).val());
-                    });
-                    if (selectedAreasIds.length > 0) {
+                    checkSelectedAreas(() => {
                         renderUIonNext(current_fs, next_fs);
                         counter++;
-                    } else {
-                        $('.areas-validation-message').html("At list one Buisnes Area must be selected.");
-                    }
+                    });
                 }
                 // Address
                 else if (counter == 3) {
@@ -62,14 +64,15 @@
                         type: 'GET',
                         success: function (response) {
                             if (response === true) {
+                                $(".captcha-validation-message").css("display", "none");
                                 renderUIonNext(current_fs, next_fs);
                                 counter++;
                             } else {
-                                $("#captcha-validation-message").html("Sorry, not valid");
+                                $(".captcha-validation-message").css("display", "block");
                             }
                         },
                         error: function(response) {
-                            $("#captcha-validation-message").html("Sorry, not valid");
+                            $(".captcha-validation-message").css("display", "block");
                         }
                     });
                 }
@@ -191,7 +194,18 @@
             $(current_proccess_tab).addClass("five");
     }
 
-
+    function checkSelectedAreas(func) {
+        var selectedAreasIds = [];
+        $.each($("input.area:checked"), function () {
+            selectedAreasIds.push($(this).val());
+        });
+        if (selectedAreasIds.length > 0) {
+            $('.areas-validation-message').css("display", "none");
+            func();
+        } else {
+            $('.areas-validation-message').css("display", "block");
+        }
+    }
 
     // Input Masks
     jQuery(function ($) {
@@ -233,11 +247,7 @@
 
     // I f Area CheckBox Checked
     $("input.area").on("change", function () {
-        if ($(this).is(':checked')) {
-            
-        } else {
-            
-        }
+        checkSelectedAreas(() => { });
     });
 
 
@@ -260,10 +270,36 @@
             }
         });
     });
+
+
+
+
+    
+
+
+
+    // Kendo PopOver
+    $(".target").kendoPopover({
+        /*showOn: "click",*/
+        body: function (e) {
+            return $(e.target).children().text();
+        },
+        //actionsPosition: "center",
+        //actions: [
+        //    {
+        //        text: "update",
+        //        click: function () { console.log("update"); }
+        //    }, {
+        //        text: "create",
+        //        click: function () { console.log("create"); }
+        //    }]
+    });
     
 
 
 });
+
+
 
 
 

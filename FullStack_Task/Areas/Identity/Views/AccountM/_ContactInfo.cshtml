@@ -25,7 +25,9 @@
                     <div class="col-md-9">
                         @Html.DropDownListFor(m => m.SalutationId, new SelectList(@salutations, "ID", "Name"), "select", new { @class = "form-control myinput" })
                         @Html.Label("EMAIL WILL BE YOUR LOGIN", null, new { @class = "details hidden" })
-                        @Html.ValidationMessageFor(m => m.SalutationId, null, new { @class="text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.SalutationId, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -36,7 +38,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control myinput" })
-                        @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -47,7 +51,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control myinput" })
-                        @Html.ValidationMessageFor(m => m.MiddleName, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.MiddleName, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -58,7 +64,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.LastName, new { @class = "form-control myinput" })
-                        @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -69,7 +77,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.Company, new { @class = "form-control myinput" })
-                        @Html.ValidationMessageFor(m => m.Company, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.Company, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -80,7 +90,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.Title, new { @class = "form-control myinput" })
-                        @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -95,7 +107,9 @@
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control myinput" })
                         @Html.Label("EMAIL WILL BE YOUR LOGIN", null, new { @class = "details" })
-                        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -106,7 +120,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.ConfirmEmail, new { @class = "form-control myinput" })
-                        @Html.ValidationMessageFor(m => m.ConfirmEmail, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.ConfirmEmail, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -117,7 +133,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.Phone, new { @class = "form-control phone myinput" })
-                        @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -128,7 +146,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.Fax, new { @class = "form-control fax myinput" })
-                        @Html.ValidationMessageFor(m => m.Fax, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.Fax, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
@@ -139,7 +159,9 @@
                     </div>
                     <div class="col-md-9">
                         @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control mobile myinput" })
-                        @Html.ValidationMessageFor(m => m.Mobile, null, new { @class = "text-danger" })
+                        <span class="target">
+                            @Html.ValidationMessageFor(m => m.Mobile, null, new { @class = "text-danger" })
+                        </span>
                     </div>
                 </div>
             </div>
