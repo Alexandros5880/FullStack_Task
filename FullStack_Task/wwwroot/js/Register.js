@@ -3,6 +3,7 @@
     var current_fs, next_fs, previous_fs;
     var counter = 1;
 
+
     // No BACK button on first screen
     if ($(".show").hasClass("first-screen")) {
         $(".prev").css({ 'display': 'none' });
@@ -20,8 +21,10 @@
     current_fs = $(".steps-container").find(`[data-counter='${1}']`);
     var tabTitle = $(current_fs).children('input[name="title"]').val();
     $('.display-screen').html(tabTitle)
-    
+
+
     $("*").validate();
+
 
     // Next button
     $(".next-button").click(function () {
@@ -139,7 +142,6 @@
         $(current_proccess_tab).addClass("active");
     }
 
-
     function renderUionBack(current_fs, previous_fs) {
         // Update Tab Sub Title Based On Current Tab
         var tabTitle = $(previous_fs).children('input[name="title"]').val();
@@ -207,14 +209,13 @@
         }
     }
 
+
     // Input Masks
     jQuery(function ($) {
         $(".phone").mask("(999) - 9999999", { placeholder: "  " });
         $(".fax").mask("(999) - 9999999", { placeholder: "  " });
         $(".mobile").mask("(99) - 99999999", { placeholder: "  " });
     });
-
-
 
 
     // When Country Selected Change The States
@@ -240,9 +241,6 @@
             }
         });
     });
-
-
-
 
 
     // I f Area CheckBox Checked
@@ -272,30 +270,13 @@
     });
 
 
-
-
-    
-
-
-
     // Kendo PopOver
     $(".target").kendoPopover({
         /*showOn: "click",*/
         body: function (e) {
-            return $(e.target).children().text();
-        },
-        //actionsPosition: "center",
-        //actions: [
-        //    {
-        //        text: "update",
-        //        click: function () { console.log("update"); }
-        //    }, {
-        //        text: "create",
-        //        click: function () { console.log("create"); }
-        //    }]
+            return `<span class="text-danger">${$(e.target).children().text()}</span>`;
+        }
     });
-    
-
 
 });
 
