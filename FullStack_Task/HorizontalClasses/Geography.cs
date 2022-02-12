@@ -1,5 +1,4 @@
 ﻿using FullStack_Task.HorizontalClasses.Interfaces;
-using FullStack_Task.Models.OtherModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -11,115 +10,43 @@ namespace FullStack_Task.HorizontalClasses
     {
         public async Task<ICollection<Country>> GetCountries()
         {
-            string url = @"https://restcountries.com/v3.1/all";
+            string url = @"https://www.universal-tutorial.com/api/countries";
 
             HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhbGV4YW5kcm9zcGxhdGFuaW9zMjhAZ21haWwuY29tIiwiYXBpX3Rva2VuIjoid0MzNGlKVjFlWHVqZHlwNVNTaGltcUZSSWtYbloxeWxzTEJtMGlIU3VfSi1EQkpYRGR5R0ZsVUpRS0FRRHZaMVRFRSJ9LCJleHAiOjE2NDQ3ODEzNzB9.zDRoBPbTigIGJJIt4KG9qgKyVShzYsrc3TBi_IP2qbA");
             HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            ICollection<CountriesModel> countriesM = JsonConvert.DeserializeObject<ICollection<CountriesModel>>(responseBody);
-            List<Country> countries = new List<Country>();
-            foreach(var country in countriesM)
-            {
-                var c = new Country()
-                {
-                    CommonName = country.Name.Common,
-                    OfficialName = country.Name.Official,
-                    Region = country.Region,
-                    Population = country.Population
-                };
-                if (country.Capital != null)
-                {
-                    foreach (var cap in country.Capital)
-                    {
-                        c.Capital.Add(cap);
-                    }
-                }
-                if (country.PostalCode != null)
-                {
-                    c.PostalCodeFormat = country.PostalCode.Format;
-                    c.PostalCodeRegex = country.PostalCode.Regex;
-                }
-                countries.Add(c);
-            }
-            return countries;
+            return JsonConvert.DeserializeObject<ICollection<Country>>(responseBody);
         }
 
-        public async Task<ICollection<Country>> GetCountriesAndStates()
+        public async Task<ICollection<State>> GetStatesOfCountry(string countryName)
         {
-            string url = @"https://countriesnow.space/api/v0.1/countries/states";
-
+            string url = @"https://www.universal-tutorial.com/api/states/"+ countryName;
             HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhbGV4YW5kcm9zcGxhdGFuaW9zMjhAZ21haWwuY29tIiwiYXBpX3Rva2VuIjoid0MzNGlKVjFlWHVqZHlwNVNTaGltcUZSSWtYbloxeWxzTEJtMGlIU3VfSi1EQkpYRGR5R0ZsVUpRS0FRRHZaMVRFRSJ9LCJleHAiOjE2NDQ3ODEzNzB9.zDRoBPbTigIGJJIt4KG9qgKyVShzYsrc3TBi_IP2qbA");
             HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            CountriesStatesResponse responseData = JsonConvert.DeserializeObject<CountriesStatesResponse>(responseBody);
-            List<Country> countries = new List<Country>();
-            foreach (var d in responseData.data)
-            {
-                countries.Add(new Country()
-                {
-                    Name = d.name,
-                    Iso3 = d.iso3,
-                    Iso2 = d.iso2,
-                    States = d.states
-                });
-            }
-            return countries;
+            return JsonConvert.DeserializeObject<ICollection<State>>(responseBody);
         }
 
-        public ICollection<State> GetStatesOfCountry(ICollection<Country> countries, string countryName)
-        {
-            foreach(var country in countries)
-            {
-                if (country.Name.Equals(countryName))
-                {
-                    return country.States;
-                } 
-            }
-            return new List<State>() { new State() { Name = "", State_code = "" } };
-        }
-
-        protected class CountriesStatesResponse
-        {
-            public bool error { get; set; }
-            public string msg { get; set; }
-            public ICollection<CountriesStatesData> data { get; set; }
-        }
-
-        protected class CountriesStatesData
-        {
-            public string name { get; set; }
-            public string iso3 { get; set; }
-            public string iso2 { get; set; }
-            public ICollection<State> states { get; set; }
-        }
-
-        protected class CountriesModel
-        {
-            public SubName Name { get; set; }
-            public string[] Capital { get; set; }
-            public string Region { get; set; }
-            public long Population { get; set; }
-            public PostalCodeModel PostalCode { get; set; }
-        }
-
-        protected class SubName
-        {
-            public string Common { get; set; }
-            public string Official { get; set; }
-        }
-
-        protected class PostalCodeModel
-        {
-            public string Format { get; set; }
-            public string Regex { get; set; }
-        }
 
     }
 
+    public class Country
+    {
+        public string Country_name { get; set; }
+        public string Country_short_name { get; set; }
+        public string Country_phone_code { get; set; }
+    }
 
-    
+    public class State
+    {
+        public string State_name { get; set; }
+    }
 
 
 }

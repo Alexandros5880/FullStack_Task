@@ -212,7 +212,7 @@
             success: function (response) {
                 var html = `<select class="form-control dropdown" id="State" name="State"><option value="">select</option>`;
                 response.forEach(function (state) {
-                    html += `<option value="${state.name}">${state.name}</option>`;
+                    html += `<option value="${state.state_name}">${state.state_name}</option>`;
                 });
                 html += `</select>`;
                 $('#state-drop-down').html(html);

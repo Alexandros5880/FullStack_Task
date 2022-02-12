@@ -25,7 +25,7 @@ namespace FullStack_Task.Areas.Identity.Controllers
         {
             ViewData["Salutations"] = await this._db.Salutations.GetAll();
             ViewData["Areas"] = await this._db.BuisnessAreas.GetAll();
-            ViewData["Countries"] = await this._geography.GetCountriesAndStates();
+            ViewData["Countries"] = await this._geography.GetCountries();
             return View();
         }
 

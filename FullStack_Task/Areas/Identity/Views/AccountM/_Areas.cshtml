@@ -1,6 +1,5 @@
 ﻿@model FullStack_Task.Areas.Identity.Models.ViewModels.AreasValidViewModel
 @using FullStack_Task.Areas.Identity.Models;
-@using FullStack_Task.Models.OtherModels;
 @using FullStack_Task.HorizontalClasses;
 
 
@@ -28,7 +27,8 @@
                     @Html.Label(area.Name, null, new { @class = "my-label" })
                 </div>
             }
-            @Html.ValidationMessageFor(m => m.BusinessAreas, null, new { @class = "text-danger areas-validation-message" })
+            <span asp-validation-for="Age" class="text-danger areas-validation-message"></span>
+            @*@Html.ValidationMessageFor(m => m.BusinessAreas, null, new { @class = "text-danger areas-validation-message" })*@
         </div>
         <div class="col-md-6">
             <div class="form-group green-border-focus" style="width: 77%;">

@@ -18,7 +18,7 @@ namespace FullStack_Task.Controllers.API
         [HttpGet("countries")]
         public async Task<IActionResult> GetStates()
         {
-            return Ok(await this._geography.GetCountriesAndStates());
+            return Ok(await this._geography.GetCountries());
         }
 
         [HttpGet("states/{countryName}")]
@@ -26,9 +26,7 @@ namespace FullStack_Task.Controllers.API
         {
             if (countryName == null)
                 return BadRequest();
-            var countries = await this._geography.GetCountriesAndStates();
-            var states = this._geography.GetStatesOfCountry(countries, countryName);
-            return Ok(states);
+            return Ok(await this._geography.GetStatesOfCountry(countryName));
         }
     }
 }

@@ -79,3 +79,17 @@ body {
     padding-right: 5%;
     height: 71vh;
 }
+
+
+
+
+
+
+/* Validation Message Icon
+----------------------------------*/
+.ui-state-error-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("/images/validation_error.ico");
+}

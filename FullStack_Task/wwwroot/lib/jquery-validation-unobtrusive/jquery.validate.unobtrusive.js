@@ -49,8 +49,25 @@
         return value;
     }
 
-    function onError(error, inputElement) {  // 'this' is the form element
-        var container = $(this).find("[data-valmsg-for='" + escapeAttributeValue(inputElement[0].name) + "']"),
+    //function onError(error, inputElement) {  // 'this' is the form element
+    //    var container = $(this).find("[data-valmsg-for='" + escapeAttributeValue(inputElement[0].name) + "']"),
+    //        replaceAttrValue = container.attr("data-valmsg-replace"),
+    //        replace = replaceAttrValue ? $.parseJSON(replaceAttrValue) !== false : null;
+
+    //    container.removeClass("field-validation-valid").addClass("field-validation-error");
+    //    error.data("unobtrusiveContainer", container);
+
+    //    if (replace) {
+    //        container.empty();
+    //        error.removeClass("input-validation-error").appendTo(container);
+    //    }
+    //    else {
+    //        error.hide();
+    //    }
+    //}
+
+    function onError(error, inputElement) {  // 'this' is the form element        
+            var container = $(this).find("[data-valmsg-for='" + escapeAttributeValue(inputElement[0].name) + "']"),
             replaceAttrValue = container.attr("data-valmsg-replace"),
             replace = replaceAttrValue ? $.parseJSON(replaceAttrValue) !== false : null;
 
@@ -58,8 +75,31 @@
         error.data("unobtrusiveContainer", container);
 
         if (replace) {
-            container.empty();
-            error.removeClass("input-validation-error").appendTo(container);
+
+            // Do not display the error message
+            //container.empty();
+            //error.removeClass("input-validation-error").appendTo(container);
+
+            // If the error message is an empty string, remove the classes
+            // from the container that displays the error icon.  Otherwise
+            // Add the classes necessary to display the error icon and
+            // wire up the qTip tooltip for the container
+            if ($(error).text() == "") {
+                container.removeClass("ui-state-error-icon").removeClass("ui-icon-alert");
+            }
+            else {
+                container.addClass("ui-state-error-icon").addClass("ui-icon-alert");
+
+                //$(container).qtip({
+                //    overwrite: true,
+                //    content: $(error).text(),
+                //    style: {
+                //        classes: 'ui-tooltip-red'
+                //    }
+                //});
+
+
+            }
         }
         else {
             error.hide();

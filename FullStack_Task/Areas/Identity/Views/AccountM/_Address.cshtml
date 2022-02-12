@@ -1,8 +1,6 @@
 ﻿@model FullStack_Task.Areas.Identity.Models.ViewModels.AddressValidViewModel
 @using FullStack_Task.Areas.Identity.Models;
-@using FullStack_Task.Models.OtherModels;
 @using FullStack_Task.HorizontalClasses;
-
 
 
 @{
@@ -25,7 +23,7 @@
                         @Html.Label("COUNTRY:", null, new { @class = "required my-label" })
                     </div>
                     <div class="col-md-9">
-                        @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Name", "Name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
+                        @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Country_name", "Country_name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
                         @Html.ValidationMessageFor(m => m.Country, null, new { @class = "text-danger" })
                     </div>
                 </div>
