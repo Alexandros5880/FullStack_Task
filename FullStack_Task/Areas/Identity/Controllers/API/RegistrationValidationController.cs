@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FullStack_Task.Areas.Identity.Models;
 using FullStack_Task.Areas.Identity.Models.ViewModels;
+using FullStack_Task.HorizontalClasses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FullStack_Task.Areas.Identity.Controllers.API
@@ -82,6 +83,21 @@ namespace FullStack_Task.Areas.Identity.Controllers.API
             {
                 return BadRequest(ModelState);
             }
+        }
+
+        [HttpPost("PasswordCaptCha")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ValidateCaptCha([FromForm] PasswordValidViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!Captcha.ValidateCaptchaCode(obj.CaptchaCode, HttpContext))
+                {
+                    return Ok(true);
+                }
+                return BadRequest(ModelState);
+            }
+            return BadRequest(ModelState);
         }
     }
 }

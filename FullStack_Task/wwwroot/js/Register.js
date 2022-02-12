@@ -64,6 +64,8 @@
                     }
                 }
                 else {
+                    // Register Chapta
+
                     renderUIonNext(current_fs, next_fs);
                     counter++;
                 }

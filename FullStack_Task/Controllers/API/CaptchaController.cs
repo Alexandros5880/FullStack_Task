@@ -1,4 +1,5 @@
-﻿using FullStack_Task.HorizontalClasses;
+﻿using FullStack_Task.Areas.Identity.Models.ViewModels;
+using FullStack_Task.HorizontalClasses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
@@ -22,5 +23,18 @@ namespace FullStack_Task.Controllers.API
             return new FileStreamResult(s, "image/png");
         }
 
+        [HttpPost]
+        public IActionResult ValidateCaptCha([FromForm] PasswordValidViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!Captcha.ValidateCaptchaCode(obj.CaptchaCode, HttpContext))
+                {
+                    return Ok(true);
+                }
+                return BadRequest(ModelState);
+            }
+            return BadRequest(ModelState);
+        }
     }
 }
