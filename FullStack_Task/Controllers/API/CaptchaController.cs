@@ -1,5 +1,4 @@
-﻿using FullStack_Task.Areas.Identity.Models.ViewModels;
-using FullStack_Task.HorizontalClasses;
+﻿using FullStack_Task.HorizontalClasses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
@@ -11,30 +10,26 @@ namespace FullStack_Task.Controllers.API
     public class CaptchaController : ControllerBase
     {
 
-        [HttpGet]
+        [HttpGet("")]
         public IActionResult GetCaptchaImage()
         {
             int width = 300;
             int height = 100;
-            var captchaCode = Captcha.GenerateCaptchaCode();
-            var result = Captcha.GenerateCaptchaImage(width, height, captchaCode);
+            var result = Captcha.GenerateCaptchaImage(width, height);
             HttpContext.Session.SetString("CaptchaCode", result.CaptchaCode);
             Stream s = new MemoryStream(result.CaptchaByteData);
             return new FileStreamResult(s, "image/png");
         }
 
-        [HttpPost]
-        public IActionResult ValidateCaptCha([FromForm] PasswordValidViewModel obj)
+        [HttpGet("Validate")]
+        public IActionResult ValidateCaptCha(string userCaptcha)
         {
-            if (ModelState.IsValid)
+            var captcha = HttpContext.Session.GetString("CaptchaCode");
+            if (Captcha.ValidateCaptchaCode(userCaptcha, captcha))
             {
-                if (!Captcha.ValidateCaptchaCode(obj.CaptchaCode, HttpContext))
-                {
-                    return Ok(true);
-                }
-                return BadRequest(ModelState);
+                return Ok(true);
             }
-            return BadRequest(ModelState);
+            return BadRequest(false);
         }
     }
 }

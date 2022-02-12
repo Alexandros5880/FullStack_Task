@@ -3,8 +3,6 @@
     var current_fs, next_fs, previous_fs;
     var counter = 1;
 
-
-
     // No BACK button on first screen
     if ($(".show").hasClass("first-screen")) {
         $(".prev").css({ 'display': 'none' });
@@ -14,24 +12,12 @@
     current_fs = $(".steps-container").find(`[data-counter='${1}']`);
     var tabTitle = $(current_fs).children('input[name="title"]').val();
     $('.display-screen').html(tabTitle)
-
-
-
-
-
-
-
     
     $("*").validate();
-
-
-
 
     // Next button
     $(".next-button").click(function () {
         if (counter == 0 || counter <= 4) {
-            
-
             // Get Current And Next Tab
             current_fs = $(".steps-container").find(`[data-counter='${counter}']`);
             next_fs = $(".steps-container").find(`[data-counter='${counter}']`).next();
@@ -40,9 +26,13 @@
             var form = $(current_fs).find(`form`);
             $("*").resetValidation();
             if (form.valid()) {
-
-                // If Area Get All Selected Checkboxes
-                if (counter == 2) {
+                // Contact Info
+                if (counter == 1) {
+                    renderUIonNext(current_fs, next_fs);
+                    counter++;
+                }
+                // Areas
+                else if (counter == 2) {
                     var selectedAreasIds = [];
                     $.each($("input.area:checked"), function () {
                         selectedAreasIds.push($(this).val());
@@ -54,7 +44,7 @@
                         $('.areas-validation-message').html("At list one Buisnes Area must be selected.");
                     }
                 }
-                // Address State Validation
+                // Address
                 else if (counter == 3) {
                     if ($('#State').val()) {
                         renderUIonNext(current_fs, next_fs);
@@ -63,14 +53,27 @@
                         $('.state-validation-message').html("State is required.");
                     }
                 }
-                else {
-                    // Register Chapta
-
-                    renderUIonNext(current_fs, next_fs);
-                    counter++;
+                // Password
+                else if (counter == 4) {
+                    var captcha = $("#captcha-input").val();
+                    $.ajax({
+                        async: false,
+                        url: `/api/Captcha/Validate?userCaptcha=${captcha}`,
+                        type: 'GET',
+                        success: function (response) {
+                            if (response === true) {
+                                renderUIonNext(current_fs, next_fs);
+                                counter++;
+                            } else {
+                                $("#captcha-validation-message").html("Sorry, not valid");
+                            }
+                        },
+                        error: function(response) {
+                            $("#captcha-validation-message").html("Sorry, not valid");
+                        }
+                    });
                 }
             }
-
         }
     });
 
@@ -87,14 +90,6 @@
         }
 
     });
-
-
-
-
-    
-
-
-
 
 
     function renderUIonNext(current_fs, next_fs) {
@@ -246,6 +241,26 @@
     });
 
 
+    // On CaptCha Input Change
+    $('#captcha-input').change(function () {
+        var captcha = $("#captcha-input").val();
+        $.ajax({
+            async: true,
+            url: `/api/Captcha/Validate?userCaptcha=${captcha}`,
+            type: 'GET',
+            success: function (response) {
+                if (response === true) {
+                    $("#captcha-validation-message").html("");
+                } else {
+                    $("#captcha-validation-message").html("Sorry, not valid");
+                }
+            },
+            error: function (response) {
+                $("#captcha-validation-message").html("Sorry, not valid");
+            }
+        });
+    });
+    
 
 
 });

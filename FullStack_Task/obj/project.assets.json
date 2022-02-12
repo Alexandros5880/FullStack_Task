@@ -7707,11 +7707,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
+      "projectUniqueName": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
       "projectName": "FullStack_Task",
-      "projectPath": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
+      "projectPath": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
       "packagesPath": "C:\\Users\\Alexp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\obj\\",
+      "outputPath": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -7807,7 +7807,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

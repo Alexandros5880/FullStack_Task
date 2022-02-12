@@ -1,6 +1,6 @@
-﻿using FullStack_Task.Models.OtherModels;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -12,31 +12,14 @@ namespace FullStack_Task.HorizontalClasses
     {
         const string Letters = "2346789ABCDEFGHJKLMNPRTUVWXYZ";
 
-        public static string GenerateCaptchaCode()
+        public static bool ValidateCaptchaCode(string userInputCaptcha, string generatedChaptaImage)
         {
-            Random rand = new Random();
-            int maxRand = Letters.Length - 1;
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < 4; i++)
-            {
-                int index = rand.Next(maxRand);
-                sb.Append(Letters[index]);
-            }
-
-            return sb.ToString();
+            return userInputCaptcha == generatedChaptaImage;
         }
-
-        public static bool ValidateCaptchaCode(string userInputCaptcha, HttpContext context)
+        
+        public static CaptchaResult GenerateCaptchaImage(int width, int height)
         {
-            var isValid = userInputCaptcha == context.Session.GetString("CaptchaCode");
-            context.Session.Remove("CaptchaCode");
-            return isValid;
-        }
-
-        public static CaptchaResult GenerateCaptchaImage(int width, int height, string captchaCode)
-        {
+            var captchaCode = Captcha.GenerateCaptchaCode();
             using (Bitmap baseMap = new Bitmap(width, height))
             using (Graphics graph = Graphics.FromImage(baseMap))
             {
@@ -52,7 +35,13 @@ namespace FullStack_Task.HorizontalClasses
 
                 baseMap.Save(ms, ImageFormat.Png);
 
-                return new CaptchaResult { CaptchaCode = captchaCode, CaptchaByteData = ms.ToArray(), Timestamp = DateTime.Now };
+                return new CaptchaResult
+                {
+                    CaptchaCode = captchaCode,
+                    CaptchaByteData = ms.ToArray(),
+                    Timestamp = DateTime.Now,
+                    FileStream = new FileStreamResult(new MemoryStream(ms.ToArray()), "image/png")
+                };
 
                 int GetFontSize(int imageWidth, int captchCodeCount)
                 {
@@ -201,5 +190,30 @@ namespace FullStack_Task.HorizontalClasses
                 }
             }
         }
+
+        private static string GenerateCaptchaCode()
+        {
+            Random rand = new Random();
+            int maxRand = Letters.Length - 1;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 4; i++)
+            {
+                int index = rand.Next(maxRand);
+                sb.Append(Letters[index]);
+            }
+            return sb.ToString();
+        }
+
+        public class CaptchaResult
+        {
+            [Required]
+            [StringLength(4)]
+            public string CaptchaCode { get; set; }
+            public byte[] CaptchaByteData { get; set; }
+            public string CaptchBase64Data => Convert.ToBase64String(CaptchaByteData);
+            public DateTime Timestamp { get; set; }
+            public FileStreamResult FileStream { get; set; }
+        }
+
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qXy5VikESC1V/leVwKL/qm0LB/BML1C9o9eW/6utYl31uEGXxL04xFUp1uKzwh5Tr7jfczo/NDX1Go6fOy6wnQ==",
+  "dgSpecHash": "5Bcig52jD3aiKOYxXOzemvulBfE6gTuKG49cCiDhiwGR5NNG/Gq0V9oMMoBE5/HKJIAuhVYBJNPEmlBZm0J9UA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
+  "projectFilePath": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alexp\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Alexp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
