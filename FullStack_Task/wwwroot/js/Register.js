@@ -70,17 +70,19 @@
                                 $(".captcha-validation-message").css("display", "none");
                                 renderUIonNext(current_fs, next_fs);
                                 counter++;
+                                createUser();
                             } else {
                                 $(".captcha-validation-message").css("display", "block");
                             }
                         },
-                        error: function(response) {
+                        error: function (response) {
                             $(".captcha-validation-message").css("display", "block");
                         }
                     });
                 }
             }
         }
+        // Completed
     });
 
     // Previous button
@@ -207,6 +209,11 @@
         } else {
             $('.areas-validation-message').css("display", "block");
         }
+    }
+
+    function createUser() {
+        var salutationId = $("*[name='SalutationId']").val();
+        console.log(`SalutationId: ${salutationId}`);
     }
 
 
