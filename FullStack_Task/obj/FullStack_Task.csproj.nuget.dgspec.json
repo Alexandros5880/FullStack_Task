@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj": {}
+    "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj": {}
   },
   "projects": {
-    "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj": {
+    "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
+        "projectUniqueName": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
         "projectName": "FullStack_Task",
-        "projectPath": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
+        "projectPath": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
         "packagesPath": "C:\\Users\\Alexp\\.nuget\\packages\\",
-        "outputPath": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\obj\\",
+        "outputPath": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -49,6 +49,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[11.0.0, )"
+            },
+            "BuildBundlerMinifier": {
+              "target": "Package",
+              "version": "[3.2.449, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
@@ -103,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

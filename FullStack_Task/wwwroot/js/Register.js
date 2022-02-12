@@ -29,21 +29,12 @@
 
     // Next button
     $(".next-button").click(function () {
-        if (counter == 1 || counter < 4) {
-            
-
-            
-
+        if (counter == 0 || counter <= 4) {
             
 
             // Get Current And Next Tab
             current_fs = $(".steps-container").find(`[data-counter='${counter}']`);
             next_fs = $(".steps-container").find(`[data-counter='${counter}']`).next();
-
-
-
-
-
 
             // Selected Tab Form Submited
             var form = $(current_fs).find(`form`);
@@ -57,8 +48,8 @@
                         selectedAreasIds.push($(this).val());
                     });
                     if (selectedAreasIds.length > 0) {
-                        counter++;
                         renderUIonNext(current_fs, next_fs);
+                        counter++;
                     } else {
                         $('.areas-validation-message').html("At list one Buisnes Area must be selected.");
                     }
@@ -66,15 +57,15 @@
                 // Address State Validation
                 else if (counter == 3) {
                     if ($('#State').val()) {
-                        counter++;
                         renderUIonNext(current_fs, next_fs);
+                        counter++;
                     } else {
                         $('.state-validation-message').html("State is required.");
                     }
                 }
                 else {
-                    counter++;
                     renderUIonNext(current_fs, next_fs);
+                    counter++;
                 }
             }
 

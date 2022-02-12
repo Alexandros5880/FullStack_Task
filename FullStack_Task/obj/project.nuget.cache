@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AQcdZ7yZHGSiAM7lhNVpM8dgdmidZWlH9ffUAl5f5uoa2pBp1iynxxr9A9DksB/curL4sTY4yrSJ0wuMprh/UA==",
+  "dgSpecHash": "qXy5VikESC1V/leVwKL/qm0LB/BML1C9o9eW/6utYl31uEGXxL04xFUp1uKzwh5Tr7jfczo/NDX1Go6fOy6wnQ==",
   "success": true,
-  "projectFilePath": "F:\\Programming\\Pojects\\WORKING\\FULLSTACK_TASK_PROJECT\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
+  "projectFilePath": "C:\\Users\\Alexp\\OneDrive\\Desktop\\FullStack_Task\\FullStack_Task\\FullStack_Task.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alexp\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Alexp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\Alexp\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\Alexp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Alexp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.12\\microsoft.aspnetcore.cryptography.internal.5.0.12.nupkg.sha512",
     "C:\\Users\\Alexp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.12\\microsoft.aspnetcore.cryptography.keyderivation.5.0.12.nupkg.sha512",
