@@ -308,6 +308,9 @@
     // Kendo PopOver
     $(".target").kendoPopover({
         /*showOn: "click",*/
+        header: function (e) {
+            return `<h5 class="kendo-header">Error</h5>`;
+        },
         body: function (e) {
             return `<span class="text-danger">${$(e.target).children().text()}</span>`;
         }
