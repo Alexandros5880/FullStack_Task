@@ -30,3 +30,17 @@ function onCoyntrySelected(countryName, successCallBack, errorCallBack) {
         }
     });
 }
+
+function registerUser(user, callBack) {
+    $.ajax({
+        url: `../../api/identity/v1/AccountM/Register`,
+        type: 'POST',
+        data: user,
+        success: function (response) {
+            callBack(response);
+        },
+        error: function (response) {
+            callBack(response);
+        }
+    });
+}

@@ -85,7 +85,7 @@
 
             // Get Current And Previus Tab
             current_fs = $(".show");
-            previous_fs = $(".show").prev();   
+            previous_fs = $(".show").prev();
 
             renderUionBack(current_fs, previous_fs);
         }
@@ -227,7 +227,7 @@
         var City = $("*[name='City']").val();
         var State = $("*[name='State']").val();
         var Password = $("*[name='Password']").val();
-        var AcceptTerms = $("*[name='AcceptTerms']").val();
+        var AcceptTerms = $("*[name='AcceptTerms']").is(':checked');
         return {
             SalutationId: SalutationId,
             FirstName: FirstName,
@@ -239,8 +239,8 @@
             Phone: Phone,
             Fax: Fax,
             Mobile: Mobile,
-            BusinessAreas: BusinessAreas,
-            Comment: Comment,
+            BAreas: BusinessAreas,
+            Message: Comment,
             Country: Country,
             OfficeName: OfficeName,
             Street: Street,
@@ -254,7 +254,9 @@
 
     function createUser() {
         var user = collectUsersData();
-        console.log(JSON.stringify(user));
+        registerUser(user, response => {
+            console.log(response);
+        });
     }
 
 

@@ -22,7 +22,7 @@ namespace FullStack_Task.Areas.Identity.Controllers.API
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(ApplicationUserViewModel viewModel)
+        public async Task<IActionResult> Register([FromForm] ApplicationUserViewModel viewModel)
         {
             if (viewModel == null)
                 return BadRequest();
