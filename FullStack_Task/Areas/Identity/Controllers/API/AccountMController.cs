@@ -27,17 +27,21 @@ namespace FullStack_Task.Areas.Identity.Controllers.API
             if (viewModel == null)
                 return BadRequest();
 
+            // Create ApplicationUser
+            ApplicationUser user = this._mapper.Map<ApplicationUser>(viewModel);
+            await this._db.Users.Add(user);
+            await this._db.Save();
+
             // Buisness Areas
             List<BusinessArea> bareas = new List<BusinessArea>();
             foreach (int areaId in viewModel.BAreas)
             {
-                bareas.Add(await this._db.BuisnessAreas.Get(areaId));
+                var businseArea = await this._db.BuisnessAreas.GetEmpty(areaId);
+                if (businseArea.Users == null)
+                    businseArea.Users = new List<ApplicationUser>();
+                businseArea.Users.Add(user);
             }
-            viewModel.BusinessAreas = bareas;
-
-            // Create ApplicationUser
-            ApplicationUser user = this._mapper.Map<ApplicationUser>(viewModel);
-            await this._db.Users.Add(user);
+            user.BusinessAreas = bareas;
             await this._db.Save();
 
             // Create Comment

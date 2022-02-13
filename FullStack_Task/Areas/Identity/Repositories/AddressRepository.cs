@@ -45,6 +45,14 @@ namespace FullStack_Task.Areas.Identity.Repositories
                     .Include(d => d.User)
                     .FirstOrDefaultAsync(a => a.ID == id);
         }
+        
+        public async Task<Address> GetEmpty(int? id)
+        {
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
+            return await this._context.Addresses
+                    .FirstOrDefaultAsync(a => a.ID == id);
+        }
 
         public async Task<ICollection<Address>> GetAll()
         {

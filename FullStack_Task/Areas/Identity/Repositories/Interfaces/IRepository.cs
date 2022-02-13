@@ -9,6 +9,7 @@ namespace FullStack_Task.Areas.Identity.Repositories.Interfaces
         Task<ICollection<T>> GetAll();
         IQueryable<T> GetAllQueryable();
         Task<T> Get(int? id);
+        Task<T> GetEmpty(int? id);
         Task<T> Add(T entity);
         T Update(T entity);
         Task<T> Delete(int? id);

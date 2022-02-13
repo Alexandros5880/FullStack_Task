@@ -20,7 +20,7 @@ namespace FullStack_Task.Areas.Identity.Models.ViewModels
         public int[] BAreas { get; set; }
         public ICollection<BusinessArea> BusinessAreas { get; set; }
         // Create Comment
-        public string CommentS { get; set; }
+        public string Message { get; set; }
         // Create Address
         public string Country { get; set; } = "";
         public string OfficeName { get; set; }

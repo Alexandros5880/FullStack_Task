@@ -45,6 +45,14 @@ namespace FullStack_Task.Areas.Identity.Repositories
                                     .FirstOrDefaultAsync(s => s.ID == id);
         }
 
+        public async Task<Salutation> GetEmpty(int? id)
+        {
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
+            return await this._context.Salutetions
+                                    .FirstOrDefaultAsync(s => s.ID == id);
+        }
+
         public async Task<ICollection<Salutation>> GetAll()
         {
             return await this._context.Salutetions

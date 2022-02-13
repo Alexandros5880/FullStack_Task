@@ -41,6 +41,6 @@ namespace FullStack_Task.Areas.Identity.Models
         [ForeignKey("AddressId")]
         public Address Address { get; set; }
         // Many -- Many
-        public virtual ICollection<BusinessArea> BusinessAreas { get; set; }
+        public ICollection<BusinessArea> BusinessAreas { get; set; }
     }
 }

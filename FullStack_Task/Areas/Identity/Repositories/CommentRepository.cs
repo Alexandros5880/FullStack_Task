@@ -44,6 +44,12 @@ namespace FullStack_Task.Areas.Identity.Repositories
                         .FirstOrDefaultAsync(c => c.ID == id);
         }
 
+        public async Task<Comment> GetEmpty(int? id)
+        {
+            return await this._context.Comments
+                        .FirstOrDefaultAsync(c => c.ID == id);
+        }
+
         public async Task<ICollection<Comment>> GetAll()
         {
             return await this._context.Comments

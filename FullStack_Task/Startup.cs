@@ -63,6 +63,11 @@ namespace FullStack_Task
             });
 
 
+            // Json Serilizer
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
 
             // Dependency Injection

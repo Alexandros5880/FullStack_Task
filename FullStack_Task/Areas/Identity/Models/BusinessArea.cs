@@ -8,10 +8,6 @@ namespace FullStack_Task.Areas.Identity.Models
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<ApplicationUser> Users { get; set; }
-        public BusinessArea()
-        {
-            this.Users = new HashSet<ApplicationUser>();
-        }
+        public ICollection<ApplicationUser> Users { get; set; }
     }
 }
