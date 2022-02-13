@@ -13,7 +13,7 @@
 
         <iframe name="forms_iframe" style="display: none;"></iframe>
 
-        <form action="/identity/api/validation/v1/AddressValid" class="registration-form" method="post" target="forms_iframe">
+        <form action="/identity/api/validation/v1/AddressValid" class="registration-form" method="post"="forms_iframe">
             @Html.AntiForgeryToken()
             <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -22,8 +22,10 @@
                     <div class="col-md-3">
                         @Html.Label("COUNTRY:", null, new { @class = "required my-label" })
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Country_name", "Country_name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
+                    </div>
+                    <div class="col-md-1">
                         <span class="target">
                             @Html.ValidationMessageFor(m => m.Country, null, new { @class = "text-danger" })
                         </span>
@@ -36,8 +38,10 @@
                     <div class="col-md-3">
                         @Html.Label("OFFICE NAME:", null, new { @class = "required my-label" })
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.OfficeName, new { @class = "form-control myinput" })
+                    </div>
+                    <div class="col-md-1">
                         <span class="target">
                             @Html.ValidationMessageFor(m => m.OfficeName, null, new { @class = "text-danger" })
                         </span>
@@ -50,8 +54,10 @@
                     <div class="col-md-3">
                         @Html.Label("ADDRESS:", null, new { @class = "required my-label" })
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Street, new { @class = "form-control myinput" })
+                    </div>
+                    <div class="col-md-1">
                         <span class="target">
                             @Html.ValidationMessageFor(m => m.Street, null, new { @class = "text-danger" })
                         </span>
@@ -64,8 +70,10 @@
                     <div class="col-md-3">
                         @Html.Label("POSTAL CODE:", null, new { @class = "required my-label" })
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control myinput" })
+                    </div>
+                    <div class="col-md-1">
                         <span class="target">
                             @Html.ValidationMessageFor(m => m.PostalCode, null, new { @class = "text-danger" })
                         </span>
@@ -78,8 +86,10 @@
                     <div class="col-md-3">
                         @Html.Label("CITY", null, new { @class = "required my-label" })
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.City, new { @class = "form-control myinput" })
+                    </div>
+                    <div class="col-md-1">
                         <span class="target">
                             @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
                         </span>
@@ -93,13 +103,15 @@
                     <div class="col-md-3">
                         @Html.Label("STATE:", null, new { @class = "required my-label" })
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         @*@Html.DropDownListFor(m => m.State, new SelectList(string.Empty, "Name", "Name"), "select", new { @class = "form-control dropdown", @id = "state-selection" })*@
                         <div id="state-drop-down">
                             <select class="form-control dropdown" id="State" name="State">
                                 <option value="">Select Country</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="col-md-1">
                         <span class="target">
                             @Html.ValidationMessageFor(m => m.State, null, new { @class = "text-danger state-validation-message" })
                         </span>

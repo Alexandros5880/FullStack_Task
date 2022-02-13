@@ -294,6 +294,14 @@
     top: 25px;
     width: 177px;
 }
+.warning:after {
+    content: "\f06a";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: darkred;
+    margin-left: 3px;
+    color: red;
+}
 .kendo-header:before {
     content: "\f06a         ";
     font-family: "Font Awesome 5 Free";
@@ -302,18 +310,15 @@
     margin-left: 3px;
     color: red;
 }
-.cloud-message-info .warning:after {
+/*.cloud-message-info {
     content: "\f06a";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: darkred;
     margin-left: 3px;
     color: red;
-}
+}*/
 /* Password Tab Instructions */
-
-
-
 @media screen and (max-width: 912px) {
     .card1 {
         border: none;

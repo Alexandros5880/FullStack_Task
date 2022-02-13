@@ -19,6 +19,9 @@
 
     <div class="row" style="margin-left: 5%; padding-left: 5%;">
         <div class="col-md-6">
+            <span class="target">
+                <span asp-validation-for="BusinessAreas" class="text-danger areas-validation-message">At list one Buisnes Area must be selected.</span>
+            </span>
             @Html.Label("Business Areas", null, new { @class = "required my-label" })
             @foreach (var area in areas)
             {
@@ -27,17 +30,14 @@
                     @Html.Label(area.Name, null, new { @class = "my-label" })
                 </div>
             }
-            <span class="target">
-                <span asp-validation-for="BusinessAreas" class="text-danger areas-validation-message">At list one Buisnes Area must be selected.</span>
-            </span>
         </div>
         <div class="col-md-6">
-            <div class="form-group green-border-focus" style="width: 77%;">
+            <div class="row">
                 @Html.Label("Business Areas", null, new { @class = "required my-label" })
                 @Html.TextAreaFor(m => m.Comment, new { @class = "form-control required my-label", @cols = 3, @rows = 5 })
                 @Html.Label("LET US KNOW FOR WHICH NETWORK YOU ARE REQUESTING ACCESS, AND ANY OTHER COMMENTS YOU'D LIKE TO LEAV US", null, new { @class = "details" })
                 <span class="target">
-                    @Html.ValidationMessageFor(m => m.Comment, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Comment, null, new { @class = "text-danger", @style = "margin: auto 0;" })
                 </span>
             </div>
         </div>

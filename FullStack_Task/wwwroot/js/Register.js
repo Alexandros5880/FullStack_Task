@@ -16,6 +16,9 @@
     // CaptCha Validation Error Display None
     $(".captcha-validation-message").css("display", "none");
 
+    // Accept Terms Validasion Message Display None
+    $(".accept-terms-validation-essage").css("display", "none");
+
 
     // Update The Tab Title With The Title Of The First Tab
     current_fs = $(".steps-container").find(`[data-counter='${1}']`);
@@ -63,9 +66,13 @@
                     var captcha = $("#captcha-input").val();
                     CaptchaValidation(captcha, function () {
                         $(".captcha-validation-message").css("display", "none");
-                        renderUIonNext(current_fs, next_fs);
-                        counter++;
-                        createUser();
+                        if ($("*[name='AcceptTerms']").is(':checked')) {
+                            renderUIonNext(current_fs, next_fs);
+                            counter++;
+                            createUser();
+                        } else {
+                            $(".accept-terms-validation-essage").css("display", "block");
+                        }
                     }, function () {
                         $(".captcha-validation-message").css("display", "block");
                     });
