@@ -9,55 +9,54 @@ using System.Threading.Tasks;
 
 namespace FullStack_Task.Areas.Identity.Repositories
 {
-    public class AddressRepository : IRepository<Address>, IDisposable
+    public class CommentRepository : IRepository<Comment>, IDisposable
     {
         private bool disposedValue;
         private readonly ApplicationDbContext _context;
 
-        public AddressRepository(IApplicationDbContext applicationDbContext)
+        public CommentRepository(IApplicationDbContext applicationDbContext)
         {
             this._context = (ApplicationDbContext)applicationDbContext;
         }
 
-        public async Task<Address> Add(Address entity)
+        public async Task<Comment> Add(Comment entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            await this._context.Addresses.AddAsync(entity);
+            await this._context.Comments.AddAsync(entity);
             return entity;
         }
 
-        public async Task<Address> Delete(int? id)
+        public async Task<Comment> Delete(int? id)
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
-            var entity = await this._context.Addresses
-                .FirstOrDefaultAsync(a => a.ID == id);
-            this._context.Addresses.Remove(entity);
+            var entity = await this._context.Comments
+                            .FirstOrDefaultAsync(c => c.ID == id);
+            this._context.Comments.Remove(entity);
             return entity;
         }
 
-        public async Task<Address> Get(int? id)
+        public async Task<Comment> Get(int? id)
         {
-            if (id == null)
-                throw new ArgumentNullException(nameof(id));
-            return await this._context.Addresses
-                    .Include(d => d.User)
-                    .FirstOrDefaultAsync(a => a.ID == id);
+            return await this._context.Comments
+                        .Include(c => c.User)
+                        .FirstOrDefaultAsync(c => c.ID == id);
         }
 
-        public async Task<ICollection<Address>> GetAll()
+        public async Task<ICollection<Comment>> GetAll()
         {
-            return await this._context.Addresses
-                                    .ToListAsync();
+            return await this._context.Comments
+                            .Include(c => c.User)
+                            .ToListAsync();
         }
 
-        public IQueryable<Address> GetAllQueryable()
+        public IQueryable<Comment> GetAllQueryable()
         {
-            return this._context.Addresses;
+            return this._context.Comments;
         }
 
-        public Address Update(Address entity)
+        public Comment Update(Comment entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));

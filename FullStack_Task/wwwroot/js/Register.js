@@ -61,28 +61,21 @@
                 // Password
                 else if (counter == 4) {
                     var captcha = $("#captcha-input").val();
-                    $.ajax({
-                        async: false,
-                        url: `/api/Captcha/Validate?userCaptcha=${captcha}`,
-                        type: 'GET',
-                        success: function (response) {
-                            if (response === true) {
-                                $(".captcha-validation-message").css("display", "none");
-                                renderUIonNext(current_fs, next_fs);
-                                counter++;
-                                createUser();
-                            } else {
-                                $(".captcha-validation-message").css("display", "block");
-                            }
-                        },
-                        error: function (response) {
-                            $(".captcha-validation-message").css("display", "block");
-                        }
+                    CaptchaValidation(captcha, function () {
+                        $(".captcha-validation-message").css("display", "none");
+                        renderUIonNext(current_fs, next_fs);
+                        counter++;
+                        createUser();
+                    }, function () {
+                        $(".captcha-validation-message").css("display", "block");
                     });
                 }
             }
         }
         // Completed
+        else {
+            createUser();
+        }
     });
 
     // Previous button
@@ -211,9 +204,57 @@
         }
     }
 
+    function collectUsersData() {
+        var SalutationId = $("*[name='SalutationId']").val();
+        var FirstName = $("*[name='FirstName']").val();
+        var MiddleName = $("*[name='MiddleName']").val();
+        var LastName = $("*[name='LastName']").val();
+        var Company = $("*[name='Company']").val();
+        var Title = $("*[name='Title']").val();
+        var Email = $("*[name='Email']").val();
+        var Phone = $("*[name='Phone']").val();
+        var Fax = $("*[name='Fax']").val();
+        var Mobile = $("*[name='Mobile']").val();
+        var BusinessAreas = [];
+        $.each($("input.area:checked"), function () {
+            BusinessAreas.push($(this).val());
+        });
+        var Comment = $("*[name='Comment']").val();
+        var Country = $("*[name='Country']").val();
+        var OfficeName = $("*[name='OfficeName']").val();
+        var Street = $("*[name='Street']").val();
+        var PostalCode = $("*[name='PostalCode']").val();
+        var City = $("*[name='City']").val();
+        var State = $("*[name='State']").val();
+        var Password = $("*[name='Password']").val();
+        var AcceptTerms = $("*[name='AcceptTerms']").val();
+        return {
+            SalutationId: SalutationId,
+            FirstName: FirstName,
+            MiddleName: MiddleName,
+            LastName: LastName,
+            Company: Company,
+            Title: Title,
+            Email: Email,
+            Phone: Phone,
+            Fax: Fax,
+            Mobile: Mobile,
+            BusinessAreas: BusinessAreas,
+            Comment: Comment,
+            Country: Country,
+            OfficeName: OfficeName,
+            Street: Street,
+            PostalCode: PostalCode,
+            City: City,
+            State: State,
+            Password: Password,
+            AcceptTerms: AcceptTerms
+        }
+    }
+
     function createUser() {
-        var salutationId = $("*[name='SalutationId']").val();
-        console.log(`SalutationId: ${salutationId}`);
+        var user = collectUsersData();
+        console.log(JSON.stringify(user));
     }
 
 
@@ -228,24 +269,19 @@
     // When Country Selected Change The States
     $("#country-selection").change(function () {
         var countryName = $("#country-selection").val();
-        $.ajax({
-            url: `../../api/Geography/states/${countryName}`,
-            type: 'GET',
-            success: function (response) {
-                var html = `<select class="form-control dropdown" id="State" name="State"><option value="">select</option>`;
-                response.forEach(function (state) {
-                    html += `<option value="${state.state_name}">${state.state_name}</option>`;
-                });
-                html += `</select>`;
-                $('#state-drop-down').html(html);
-            },
-            error: function (response) {
-                $('#state-drop-down').html(`
-                            <select class="form-control dropdown" id="State" name="State">
-                                <option value="">Select Country</option>
-                            </select>
-                        `);
-            }
+        onCoyntrySelected(countryName, function (response) {
+            var html = `<select class="form-control dropdown" id="State" name="State"><option value="">select</option>`;
+            response.forEach(function (state) {
+                html += `<option value="${state.state_name}">${state.state_name}</option>`;
+            });
+            html += `</select>`;
+            $('#state-drop-down').html(html);
+        }, function (response) {
+            $('#state-drop-down').html(`
+                <select class="form-control dropdown" id="State" name="State">
+                    <option value="">Select Country</option>
+                </select>
+            `);
         });
     });
 
@@ -259,20 +295,10 @@
     // On CaptCha Input Change
     $('#captcha-input').change(function () {
         var captcha = $("#captcha-input").val();
-        $.ajax({
-            async: true,
-            url: `/api/Captcha/Validate?userCaptcha=${captcha}`,
-            type: 'GET',
-            success: function (response) {
-                if (response === true) {
-                    $("#captcha-validation-message").html("");
-                } else {
-                    $("#captcha-validation-message").html("Sorry, not valid");
-                }
-            },
-            error: function (response) {
-                $("#captcha-validation-message").html("Sorry, not valid");
-            }
+        CaptchaValidation(captcha, function () {
+            $("#captcha-validation-message").html("");
+        }, function () {
+            $(".captcha-validation-message").css("display", "block");
         });
     });
 

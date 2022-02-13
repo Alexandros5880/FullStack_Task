@@ -24,12 +24,12 @@ namespace FullStack_Task.Areas.Identity.Repositories
             this._context = (ApplicationDbContext)context;
         }
 
-        public async Task<bool> Add(ApplicationUser entity, string password)
+        public async Task<bool> Add(ApplicationUser entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             entity.UserName = entity.Email;
-            var result = await this._userManager.CreateAsync(entity, password);
+            var result = await this._userManager.CreateAsync(entity, entity.Password);
             if (result.Succeeded)
             {
                 return true;

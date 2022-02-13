@@ -72,6 +72,7 @@ namespace FullStack_Task
             services.AddScoped<IRepository<Address>, AddressRepository>();
             services.AddScoped<IRepository<BusinessArea>, BuisnessAreaRepisitory>();
             services.AddScoped<IRepository<Salutation>, SalutationRepository>();
+            services.AddScoped<IRepository<Comment>, CommentRepository>();
             services.AddScoped<IDBHundler, DBHundler>();
             services.AddScoped<IGeography, Geography>();
         }

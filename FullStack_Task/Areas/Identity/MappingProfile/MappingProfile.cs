@@ -16,6 +16,15 @@ namespace FullStack_Task.Areas.Identity.MappingProfile
 
             CreateMap<ApplicationUser, PasswordValidViewModel> ();
             CreateMap<PasswordValidViewModel, ApplicationUser>();
+
+            CreateMap<ApplicationUser, ApplicationUserViewModel>();
+            CreateMap<ApplicationUserViewModel, ApplicationUser>();
+
+            CreateMap<Comment, ApplicationUserViewModel>();
+            CreateMap<ApplicationUserViewModel, Comment>();
+
+            CreateMap<Address, ApplicationUserViewModel>();
+            CreateMap<ApplicationUserViewModel, Address>();
         }
     }
 }

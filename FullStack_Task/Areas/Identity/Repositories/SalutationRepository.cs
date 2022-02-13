@@ -58,6 +58,8 @@ namespace FullStack_Task.Areas.Identity.Repositories
 
         public Salutation Update(Salutation entity)
         {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
             this._context.Entry(entity).State = EntityState.Modified;
             return entity;
         }

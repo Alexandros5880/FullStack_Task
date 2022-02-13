@@ -7,7 +7,7 @@ namespace FullStack_Task.Areas.Identity.Repositories.Interfaces
 {
     public interface IUsersRepository
     {
-        Task<bool> Add(ApplicationUser entity, string password);
+        Task<bool> Add(ApplicationUser entity);
         Task<ApplicationUser> Delete(string id);
         void Dispose();
         Task<ApplicationUser> Get(string id);

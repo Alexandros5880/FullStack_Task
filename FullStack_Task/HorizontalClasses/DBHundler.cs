@@ -1,7 +1,9 @@
 ﻿using FullStack_Task.Areas.Identity.Models;
 using FullStack_Task.Areas.Identity.Repositories.Interfaces;
+using FullStack_Task.Data;
 using FullStack_Task.HorizontalClasses.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace FullStack_Task.HorizontalClasses
 {
@@ -12,6 +14,9 @@ namespace FullStack_Task.HorizontalClasses
         public IRepository<Address> Address { get; protected set; }
         public IRepository<BusinessArea> BuisnessAreas { get; protected set; }
         public IRepository<Salutation> Salutations { get; protected set; }
+        public IRepository<Comment> Comments { get; protected set; }
+        private readonly ApplicationDbContext _context;
+
         private bool disposedValue;
 
         public DBHundler(
@@ -19,7 +24,9 @@ namespace FullStack_Task.HorizontalClasses
                 IUsersRepository users,
                 IRepository<Address> address,
                 IRepository<BusinessArea> bareas,
-                IRepository<Salutation> salutations
+                IRepository<Salutation> salutations,
+                IRepository<Comment> comments,
+                IApplicationDbContext applicationDbContext
             )
         {
             this.Roles = roles;
@@ -27,6 +34,13 @@ namespace FullStack_Task.HorizontalClasses
             this.Address = address;
             this.BuisnessAreas = bareas;
             this.Salutations = salutations;
+            this.Comments = comments;
+            this._context = (ApplicationDbContext)applicationDbContext;
+        }
+
+        public async Task Save()
+        {
+            await this._context.SaveChangesAsync();
         }
 
         protected virtual void Dispose(bool disposing)
@@ -40,6 +54,8 @@ namespace FullStack_Task.HorizontalClasses
                     this.Address.Dispose();
                     this.BuisnessAreas.Dispose();
                     this.Salutations.Dispose();
+                    this.Comments.Dispose();
+                    this._context.Dispose();
                 }
                 disposedValue = true;
             }

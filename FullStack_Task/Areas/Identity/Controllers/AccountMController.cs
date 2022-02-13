@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FullStack_Task.Areas.Identity.Models.ViewModels;
 using FullStack_Task.HorizontalClasses.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -29,11 +28,5 @@ namespace FullStack_Task.Areas.Identity.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel viewModel)
-        {
-            return View();
-        }
     }
 }
