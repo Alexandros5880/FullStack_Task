@@ -13,17 +13,16 @@
 
 
 
-<h3>New User Registration</h3>
-<h6 class="display-screen"></h6>
-<br />
 
 
+<div class="container registration-div">
 
-<div class="container-fluid my-form">
-    <div class="d-flex flex-md-row px-3 mt-4 flex-column-reverse my-form">
+    <h3>New User Registration</h3>
+    <h6 class="display-screen"></h6>
 
+    <div class="row my-form">
         <!-- Left Side Proccess Bar -->
-        <div class="col-md-2 progress-container">
+        <div class="col-lg-2 progress-container">
             <div class="card1">
                 <ul id="progressbar" class="text-center">
                     <li class="active one" data-counter="1"></li>
@@ -32,16 +31,17 @@
                     <li class="step0 four" data-counter="4"></li>
                     <li class="step0 five" data-counter="5"></li>
                 </ul>
-                <h6 class="mb-5" data-counter="1">Contact Info</h6>
-                <h6 class="mb-5" data-counter="2">Areas</h6>
-                <h6 class="mb-5" data-counter="3">Address</h6>
-                <h6 class="mb-5" data-counter="4">Password</h6>
-                <h6 class="mb-5" data-counter="5">Completed</h6>
+                <div id="progressbar-titles">
+                    <h6 class="mb-5" data-counter="1">Contact Info</h6>
+                    <h6 class="mb-5" data-counter="2">Areas</h6>
+                    <h6 class="mb-5" data-counter="3">Address</h6>
+                    <h6 class="mb-5" data-counter="4">Password</h6>
+                    <h6 class="mb-5" data-counter="5">Completed</h6>
+                </div>
             </div>
         </div>
-
-
-        <div class="col-md-10 steps-container">
+        <!-- Steps Container -->
+        <div class="col-lg-10 steps-container">
 
             <!-- Contact Info -->
             <div class="card2 first-screen show ml-2" data-counter="1">
@@ -121,25 +121,18 @@
         </div>
     </div>
 
+    <br/>
 
-
-    <!-- Go Back -->
-    <div class="row text-center justify-content-center">
-        <div class="col-md-7">
-
-        </div>
-        <div class="col-md-5">
-            <div style="display:flex;">
+    <!-- Back | To Login -->
+    <div id="back-login">
+        <div style="width: 100%; height: 40px;">
+            <!-- Go To Login -->
+            <a href="/Identity/Account/Login">Back to login</a>
+            <!-- Go Back -->
+            <div style="display: flex; float: right;">
                 <button class="prev btn btn-light">Back</button>
                 <button class="next-button btn btn-primary">Next</button>
             </div>
-        </div>
-    </div>
-
-    <!-- Go To Login -->
-    <div class="row">
-        <div class="col-md-2" style="text-align:left;">
-            <a class="mr-0" href="/Identity/Account/Login">Back to login</a>
         </div>
     </div>
 

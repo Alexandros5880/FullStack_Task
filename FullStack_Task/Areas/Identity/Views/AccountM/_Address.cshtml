@@ -18,115 +18,68 @@
             <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="form-group my-form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        @Html.Label("COUNTRY:", null, new { @class = "required my-label" })
-                    </div>
-                    <div class="col-md-8">
-                        @if (countries != null)
-                        {
-                            @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Country_name", "Country_name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
-                        } else {
-                            <h3 class="text-danger">Token has expired</h3>
-                        }
-                    </div>
-                    <div class="col-md-1">
-                        <span class="target">
-                            @Html.ValidationMessageFor(m => m.Country, null, new { @class = "text-danger" })
-                        </span>
-                    </div>
-                </div>
+                @Html.Label("COUNTRY:", null, new { @class = "required my-label" })
+                @if (countries != null)
+                {
+                    @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Country_name", "Country_name"), "select", new { @class = "form-control dropdown myinput", @id = "country-selection" })
+                }
+                else
+                {
+                    <h3 class="text-danger">Token has expired</h3>
+                }
+                <span class="target">
+                    @Html.ValidationMessageFor(m => m.Country, null, new { @class = "text-danger" })
+                </span>
             </div>
 
             <div class="form-group my-form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        @Html.Label("OFFICE NAME:", null, new { @class = "required my-label" })
-                    </div>
-                    <div class="col-md-8">
-                        @Html.TextBoxFor(m => m.OfficeName, new { @class = "form-control myinput" })
-                    </div>
-                    <div class="col-md-1">
-                        <span class="target">
-                            @Html.ValidationMessageFor(m => m.OfficeName, null, new { @class = "text-danger" })
-                        </span>
-                    </div>
-                </div>
+                @Html.Label("OFFICE NAME:", null, new { @class = "required my-label" })
+                @Html.TextBoxFor(m => m.OfficeName, new { @class = "form-control myinput" })
+                <span class="target">
+                    @Html.ValidationMessageFor(m => m.OfficeName, null, new { @class = "text-danger" })
+                </span>
             </div>
 
             <div class="form-group my-form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        @Html.Label("ADDRESS:", null, new { @class = "required my-label" })
-                    </div>
-                    <div class="col-md-8">
-                        @Html.TextBoxFor(m => m.Street, new { @class = "form-control myinput" })
-                    </div>
-                    <div class="col-md-1">
-                        <span class="target">
-                            @Html.ValidationMessageFor(m => m.Street, null, new { @class = "text-danger" })
-                        </span>
-                    </div>
-                </div>
+                @Html.Label("ADDRESS:", null, new { @class = "required my-label" })
+                @Html.TextBoxFor(m => m.Street, new { @class = "form-control myinput" })
+                <span class="target">
+                    @Html.ValidationMessageFor(m => m.Street, null, new { @class = "text-danger" })
+                </span>
             </div>
 
             <div class="form-group my-form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        @Html.Label("POSTAL CODE:", null, new { @class = "required my-label" })
-                    </div>
-                    <div class="col-md-8">
-                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control myinput" })
-                    </div>
-                    <div class="col-md-1">
-                        <span class="target">
-                            @Html.ValidationMessageFor(m => m.PostalCode, null, new { @class = "text-danger" })
-                        </span>
-                    </div>
-                </div>
+                @Html.Label("POSTAL CODE:", null, new { @class = "required my-label" })
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control myinput" })
+                <span class="target">
+                    @Html.ValidationMessageFor(m => m.PostalCode, null, new { @class = "text-danger" })
+                </span>
             </div>
 
             <div class="form-group my-form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        @Html.Label("CITY", null, new { @class = "required my-label" })
-                    </div>
-                    <div class="col-md-8">
-                        @Html.TextBoxFor(m => m.City, new { @class = "form-control myinput" })
-                    </div>
-                    <div class="col-md-1">
-                        <span class="target">
-                            @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
-                        </span>
-                    </div>
-                </div>
-
+                @Html.Label("CITY", null, new { @class = "required my-label" })
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control myinput" })
+                <span class="target">
+                    @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
+                </span>
             </div>
 
             <div class="form-group my-form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        @Html.Label("STATE:", null, new { @class = "required my-label" })
-                    </div>
-                    <div class="col-md-8">
-                        @if (countries != null)
-                        {
-                        <div id="state-drop-down">
-                            <select class="form-control dropdown" id="State" name="State">
-                                <option value="">Select Country</option>
-                            </select>
-                        </div>                        }
-                        else
-                        {
-                            <h3 class="text-danger">Token has expired</h3>
-                        }
-                    </div>
-                    <div class="col-md-1">
-                        <span class="target">
-                            <span asp-validation-for="Sate" class="text-danger state-validation-message">State Is Requiered.</span>
-                        </span>
-                    </div>
-                </div>
+                @Html.Label("STATE:", null, new { @class = "required my-label" })
+                @if (countries != null)
+                {
+                    <div id="state-drop-down" style="width: 100%;">
+                        <select class="form-control dropdown  myinput" id="State" name="State">
+                            <option value="">Select Country</option>
+                        </select>
+                    </div> }
+                else
+                {
+                    <h3 class="text-danger">Token has expired</h3>
+                }
+                <span class="target">
+                    <span asp-validation-for="Sate" class="text-danger state-validation-message">State Is Requiered.</span>
+                </span>
             </div>
             <div class="form-group my-form-group" style="display: none;">
                 <input type="submit" value="Save" />

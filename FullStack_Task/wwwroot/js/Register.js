@@ -181,12 +181,14 @@
         $(previus_proccess_tab).removeClass("fivec");
         $(previus_proccess_tab).addClass("active");
         if (counter == 0)
-            $(current_proccess_tab).addClass("tow");
+            $(current_proccess_tab).addClass("one");
         if (counter == 1)
-            $(current_proccess_tab).addClass("three");
+            $(current_proccess_tab).addClass("tow");
         if (counter == 2)
-            $(current_proccess_tab).addClass("four");
+            $(current_proccess_tab).addClass("three");
         if (counter == 3)
+            $(current_proccess_tab).addClass("four");
+        if (counter == 4)
             $(current_proccess_tab).addClass("five");
     }
 
@@ -298,7 +300,7 @@
     $("#country-selection").change(function () {
         var countryName = $("#country-selection").val();
         onCoyntrySelected(countryName, function (response) {
-            var html = `<select class="form-control dropdown" id="State" name="State"><option value="">select</option>`;
+            var html = `<select class="form-control dropdown  myinput" id="State" name="State"><option value="">select</option>`;
             response.forEach(function (state) {
                 html += `<option value="${state.state_name}">${state.state_name}</option>`;
             });
@@ -306,7 +308,7 @@
             $('#state-drop-down').html(html);
         }, function (response) {
             $('#state-drop-down').html(`
-                <select class="form-control dropdown" id="State" name="State">
+                <select class="form-control dropdown  myinput" id="State" name="State">
                     <option value="">Select Country</option>
                 </select>
             `);

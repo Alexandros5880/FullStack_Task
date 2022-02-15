@@ -6,34 +6,46 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-.card0 {
-    background-color: #F5F5F5;
-    border-radius: 8px;
-    z-index: 0;
+.registration-div {
+    margin-top: 3%;
+    height: 100%;
+    padding-bottom: 3% !important;
 }
+
+.my-form {
+    margin-top: 3%;
+    height: 100%;
+}
+
+.progress-container {
+    border-right: 1px solid darkgray;
+    padding: 0px;
+}
+
+@media screen and (max-width: 993px) {
+    .progress-container {
+        display: none;
+        border-right: none;
+    }
+}
+
+
+
+
 
 
 .card1 {
-    margin-left: 63px;
+    position: relative;
+    width: 100%;
     z-index: 0;
-    /*border-right: 1px solid #F5F5F5;*/
+    margin-top: 33px;
 }
-
 .card2 {
+    position: relative;
+    width: 100%;
     display: none;
+    margin-top: 33px;
 }
-
 .card2.show {
     display: block;
 }
@@ -43,43 +55,18 @@
 
 
 
-
-
-
-
-
-/* Next/Previus Button */
-.next-button {
-    width: 100px;
-    cursor: pointer;
-}
-.next-button:hover {
-
-}
-.prev {
-    margin-right: 1%;
-    width: 100px;
-    cursor: pointer;
-}
-.prev:hover {
-
-}
-/* Next/Previus Button */
-
-
-
-
-
-
-
-
-
-
 #progressbar {
     position: absolute;
-    left: 0px;
+    left: 11px;
     overflow: hidden;
     color: #E53935;
+    padding: 0px;
+}
+#progressbar-titles {
+    position: absolute;
+    overflow: hidden;
+    left: 50px;
+    padding: 0px;
 }
 
 #progressbar li {
@@ -87,25 +74,14 @@
     margin-bottom: 36px;
 }
 
-#progressbar li:nth-child(3) {
-    
-}
-
 #progressbar .step0:before {
     content: "";
     color: #fff;
 }
 
-
-
-
-
-
-/* Proccess List Sceleton */
 #progressbar li:before {
     width: 30px;
     height: 30px;
-    /*line-height: 23px;*/
     display: block;
     font-size: 20px;
     background: white;
@@ -113,54 +89,57 @@
     border-radius: 50%;
     margin: auto;
 }
-#progressbar li:last-child:before {
-    
-}
+
 #progressbar li:after {
     content: '';
     width: 2px;
-    height: 63%;
+    height: 83%;
     background: darkgray;
     position: absolute;
-    left: 54px;
+    left: 14px;
     top: 15px;
     z-index: -1;
 }
-#progressbar li.active:after {
-    background: darkgray;
-}
+
 /*one*/
+/*#region List Node Before Passed*/
 #progressbar li.one:before {
     content: "1";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: gray;
 }
+
 #progressbar li.tow:before {
     content: "2";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: gray;
 }
+
 #progressbar li.three:before {
     content: "3";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: gray;
 }
+
 #progressbar li.four:before {
     content: "4";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: gray;
 }
+
 #progressbar li.five:before {
     content: "5";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: gray;
 }
+/*#endregion List Node Before Passed*/
 /*onec*/
+/*#region List Node After Passed*/
 #progressbar li.onec:before {
     content: "1";
     font-family: "Font Awesome 5 Free";
@@ -200,6 +179,7 @@
     color: white;
     background: #00ADC8;
 }
+/*#endregion List Node After Passed*/
 /*active*/
 #progressbar li.active:before {
     content: "\f303";
@@ -216,67 +196,26 @@
 
 
 
-#progressbar li:last-child:after {
-    top: 147px;
-    height: 132px;
+/* Next/Previus Button */
+.next-button {
+    width: 100px;
+    cursor: pointer;
 }
+.next-button:hover {
 
-#progressbar li:nth-child(3):after {
-    top: 81px;
 }
-
-#progressbar li:nth-child(2):after {
-    top: 0px;
+.prev {
+    margin-right: 1%;
+    width: 100px;
+    cursor: pointer;
 }
+.prev:hover {
 
-#progressbar li:first-child:after {
-    position: absolute;
-    top: -81px;
 }
+/* Next/Previus Button */
 
 
 
-
-
-
-
-
-
-.my-form {
-    height: 100%;
-}
-
-
-.steps-container {
-    border-left: 1px solid darkgray;
-}
-
-
-
-.my-form-group {
-    padding: 0px;
-    margin: 1%;
-    text-align: right;
-}
-.required::before {
-    content: "*";
-    font-weight: bold;
-    color: #00ADC8;
-    margin-right: 3px;
-}
-.details {
-    float: left;
-    font-size: 10px;
-}
-.my-lable {
-    font-size: 13px;
-}
-.myinput {
-    font-size: 13px;
-}
-.hidden {
-    visibility: hidden;
-}
 
 
 
@@ -294,6 +233,15 @@
     top: 25px;
     width: 177px;
 }
+/* Password Tab Instructions */
+
+
+
+
+
+
+
+/* Validation kendo PopOver */
 .warning:after {
     content: "\f06a";
     font-family: "Font Awesome 5 Free";
@@ -310,29 +258,92 @@
     margin-left: 3px;
     color: red;
 }
-/*.cloud-message-info {
-    content: "\f06a";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: darkred;
+/* Validation kendo PopOver */
+
+
+
+
+
+
+
+
+
+
+.my-form-group {
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+    text-align: right;
+    padding-bottom: 5px;
+}
+
+.required::before {
+    content: "*";
+    font-weight: bold;
+    color: #00ADC8;
+    margin-right: 3px;
+}
+.hidden {
+    visibility: hidden;
+}
+
+
+.my-label {
+    margin-right: 7px !important;
+    font-size: 13px;
+    min-width: 140px;
+}
+.myinput {
+    font-size: 13px;
+    min-width: 233px !important;
+    width: 233px;
+    height: 27px;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0px;
+}
+.details {
+    float: left;
+    font-size: 10px;
+    padding: 0px;
+}
+.target {
     margin-left: 3px;
-    color: red;
-}*/
-/* Password Tab Instructions */
-@media screen and (max-width: 912px) {
-    .card1 {
-        border: none;
-        margin-left: 50px;
-    }
-
-    .card2 {
-        border-bottom: 1px solid #F5F5F5;
-        margin-bottom: 25px;
-    }
+}
 
 
 
-    #progressbar {
-        left: -25px;
-    }
+
+
+
+
+
+
+
+
+
+/* Validation Message Icon
+----------------------------------*/
+.ui-state-error-icon,
+.areas-validation-message,
+.captcha-validation-message,
+.state-validation-message,
+.accept-terms-validation-essage {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("/images/validation_error.ico");
+}
+
+
+.field-validation-error,
+.areas-validation-message,
+.captcha-validation-message,
+.state-validation-message,
+.accept-terms-validation-essage {
+    font-size: smaller;
+    /* Hide the text. */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
