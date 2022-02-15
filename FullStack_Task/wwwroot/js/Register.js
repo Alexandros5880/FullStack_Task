@@ -67,10 +67,7 @@
                 }
                 // Password
                 else if (counter == 4) {
-
                     customCaptChaValidation();
-
-                    
                 }
             }
         }
@@ -204,8 +201,18 @@
         } else {
             $('.areas-validation-message').css("display", "block");
         }
-}
+    }
 
+    // CaptCha
+    function refreshCaptCha() {
+        $("#refresh-captcha").click(function () {
+            resetCaptchaImage();
+        });
+        function resetCaptchaImage() {
+            d = new Date();
+            $("#img-captcha").attr("src", "../../api/Captcha");
+        }
+    }
     function customCaptChaValidation() {
         var captcha = $("#captcha-input").val();
         CaptchaValidation(captcha, function () {
@@ -221,6 +228,7 @@
             $(".captcha-validation-message").css("display", "block");
         });
     }
+    refreshCaptCha();
 
     function collectUsersData() {
         var SalutationId = $("*[name='SalutationId']").val();
