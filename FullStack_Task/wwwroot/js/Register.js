@@ -309,7 +309,13 @@
         }, function (response) {
             $('#state-drop-down').html(`
                 <select class="form-control dropdown  myinput" id="State" name="State">
-                    <option value="">Select Country</option>
+                    <option value="">State 1</option>
+                    <option value="">State 2</option>
+                    <option value="">State 3</option>
+                    <option value="">State 4</option>
+                    <option value="">State 5</option>
+                    <option value="">State 6</option>
+                    <option value="">State 7</option>
                 </select>
             `);
         });

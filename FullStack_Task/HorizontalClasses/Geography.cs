@@ -24,7 +24,25 @@ namespace FullStack_Task.HorizontalClasses
             }
             else
             {
-                return null;
+                return new List<Country>()
+                {
+                    new Country()
+                    {
+                        Country_name = "Belaruz"
+                    },
+                    new Country()
+                    {
+                        Country_name = "Greece"
+                    },
+                    new Country()
+                    {
+                        Country_name = "America"
+                    },
+                    new Country()
+                    {
+                        Country_name = "Germany"
+                    },
+                };
             }
         }
 
@@ -44,7 +62,36 @@ namespace FullStack_Task.HorizontalClasses
             }
             else
             {
-                return null;
+                return new List<State>()
+                {
+                    new State()
+                    {
+                        State_name = "State 1"
+                    },
+                    new State()
+                    {
+                        State_name = "State  2"
+                    },
+                    new State()
+                    {
+                        State_name = "State 3"
+                    },
+                    new State()
+                    {
+                        State_name = "State 4"
+                    },new State()
+                    {
+                        State_name = "State 5"
+                    },
+                    new State()
+                    {
+                        State_name = "State 6"
+                    },
+                    new State()
+                    {
+                        State_name = "State 7"
+                    },
+                };
             }
         }
 
@@ -79,7 +126,6 @@ namespace FullStack_Task.HorizontalClasses
         public string Country_short_name { get; set; }
         public string Country_phone_code { get; set; }
     }
-
     public class State
     {
         public string State_name { get; set; }
