@@ -19,6 +19,9 @@
     // Accept Terms Validasion Message Display None
     $(".accept-terms-validation-essage").css("display", "none");
 
+    // State Validation Mesage Display None
+    $(".state-validation-message").css("display", "none");
+
 
     // Update The Tab Title With The Title Of The First Tab
     current_fs = $(".steps-container").find(`[data-counter='${1}']`);
@@ -55,27 +58,19 @@
                 // Address
                 else if (counter == 3) {
                     if ($('#State').val()) {
+                        $('.state-validation-message').css("display", "none");
                         renderUIonNext(current_fs, next_fs);
                         counter++;
                     } else {
-                        $('.state-validation-message').html("State is required.");
+                        $('.state-validation-message').css("display", "block");
                     }
                 }
                 // Password
                 else if (counter == 4) {
-                    var captcha = $("#captcha-input").val();
-                    CaptchaValidation(captcha, function () {
-                        $(".captcha-validation-message").css("display", "none");
-                        if ($("*[name='AcceptTerms']").is(':checked')) {
-                            renderUIonNext(current_fs, next_fs);
-                            counter++;
-                            createUser();
-                        } else {
-                            $(".accept-terms-validation-essage").css("display", "block");
-                        }
-                    }, function () {
-                        $(".captcha-validation-message").css("display", "block");
-                    });
+
+                    customCaptChaValidation();
+
+                    
                 }
             }
         }
@@ -209,6 +204,22 @@
         } else {
             $('.areas-validation-message').css("display", "block");
         }
+}
+
+    function customCaptChaValidation() {
+        var captcha = $("#captcha-input").val();
+        CaptchaValidation(captcha, function () {
+            $(".captcha-validation-message").css("display", "none");
+            if ($("*[name='AcceptTerms']").is(':checked')) {
+                renderUIonNext(current_fs, next_fs);
+                counter++;
+                createUser();
+            } else {
+                $(".accept-terms-validation-essage").css("display", "block");
+            }
+        }, function () {
+            $(".captcha-validation-message").css("display", "block");
+        });
     }
 
     function collectUsersData() {

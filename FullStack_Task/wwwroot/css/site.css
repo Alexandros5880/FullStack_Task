@@ -87,9 +87,10 @@ body {
 
 /* Validation Message Icon
 ----------------------------------*/
-.ui-state-error-icon, 
-.areas-validation-message, 
-.captcha-validation-message, 
+.ui-state-error-icon,
+.areas-validation-message,
+.captcha-validation-message,
+.state-validation-message,
 .accept-terms-validation-essage {
     display: inline-block;
     width: 16px;
@@ -98,13 +99,14 @@ body {
 }
 
 
-.field-validation-error, 
-.areas-validation-message, 
-.captcha-validation-message, 
-.accept-terms-validation-essage {
-    font-size: smaller;
-    /* Hide the text. */
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
+    .field-validation-error,
+    .areas-validation-message,
+    .captcha-validation-message,
+    .state-validation-message,
+    .accept-terms-validation-essage {
+        font-size: smaller;
+        /* Hide the text. */
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+    }

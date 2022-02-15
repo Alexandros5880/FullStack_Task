@@ -23,7 +23,12 @@
                         @Html.Label("COUNTRY:", null, new { @class = "required my-label" })
                     </div>
                     <div class="col-md-8">
-                        @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Country_name", "Country_name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
+                        @if (countries != null)
+                        {
+                            @Html.DropDownListFor(m => m.Country, new SelectList(@countries, "Country_name", "Country_name"), "select", new { @class = "form-control dropdown", @id = "country-selection" })
+                        } else {
+                            <h3 class="text-danger">Token has expired</h3>
+                        }
                     </div>
                     <div class="col-md-1">
                         <span class="target">
@@ -104,16 +109,21 @@
                         @Html.Label("STATE:", null, new { @class = "required my-label" })
                     </div>
                     <div class="col-md-8">
-                        @*@Html.DropDownListFor(m => m.State, new SelectList(string.Empty, "Name", "Name"), "select", new { @class = "form-control dropdown", @id = "state-selection" })*@
+                        @if (countries != null)
+                        {
                         <div id="state-drop-down">
                             <select class="form-control dropdown" id="State" name="State">
                                 <option value="">Select Country</option>
                             </select>
-                        </div>
+                        </div>                        }
+                        else
+                        {
+                            <h3 class="text-danger">Token has expired</h3>
+                        }
                     </div>
                     <div class="col-md-1">
                         <span class="target">
-                            @Html.ValidationMessageFor(m => m.State, null, new { @class = "text-danger state-validation-message" })
+                            <span asp-validation-for="Sate" class="text-danger state-validation-message">State Is Requiered.</span>
                         </span>
                     </div>
                 </div>
