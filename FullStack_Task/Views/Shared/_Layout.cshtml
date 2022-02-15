@@ -47,20 +47,24 @@
         &copy; 2022 - FullStack_Task - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"  type="text/javascript"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-maskedinput-master/src/jquery.maskedinput.js" type="text/javascript"></script>
-
     <script src="https://kendo.cdn.telerik.com/2022.1.119/js/kendo.all.min.js"></script>
-
-    <script src="~/lib/jquery-validation/dist/additional-methods.min.js" type="text/javascript"></script>
+    @*<script src="~/lib/jquery-validation/dist/additional-methods.min.js" type="text/javascript"></script>*@
     <script src="~/lib/jquery-validation/dist/jquery.validate.js" type="text/javascript"></script>
-
     <script src="~/lib/jquery-ui-1_13_1_custom/jquery-ui.min.js" type="text/javascript"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" type="text/javascript"></script>
 
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
